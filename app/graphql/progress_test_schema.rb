@@ -1,4 +1,6 @@
 class ProgressTestSchema < GraphQL::Schema
+  DEFINITION_DUMP_PATH = "app/graphql/__generated__/schema.graphql"
+
   mutation(Types::MutationType)
   query(Types::QueryType)
 
