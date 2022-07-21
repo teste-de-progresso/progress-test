@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :name
+  permit_params :email, :name, role_ids: []
 
   index do
     selectable_column
@@ -17,7 +17,8 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :email
-      f.input :email
+      f.input :name
+      f.input :roles, as: :check_boxes
     end
     f.actions
   end

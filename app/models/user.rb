@@ -26,5 +26,7 @@ class User < ApplicationRecord
          :omniauthable,
          omniauth_providers: [:google_oauth2]
 
+  has_and_belongs_to_many :roles
+
   validates :name, presence: true
 end
