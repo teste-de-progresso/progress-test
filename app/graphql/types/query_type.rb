@@ -8,8 +8,14 @@ module Types
       argument :where, Inputs::QuestionWhereInput, required: false
     end
 
+    field :current_user, Types::UserType, null: true
+
     def questions(where: nil)
       Resolvers::QuestionsQueryResolver.new(Question, context: context, where: where).resolve
+    end
+
+    def current_user
+      context[:current_user]
     end
   end
 end
