@@ -43,6 +43,7 @@ end
 
 group :development do
   gem "annotate", "~> 3.2"
+  gem "rails-erd", "~> 1.7"
 
   gem "web-console"
 end
