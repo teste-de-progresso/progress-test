@@ -26,6 +26,9 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "activeadmin", "~> 2.13"
+gem "sassc-rails"
+
 gem "devise", "~> 4.8"
 gem "omniauth", "~> 1.9.1"
 gem "omniauth-google-oauth2", "~> 0.8.2"
