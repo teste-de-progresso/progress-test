@@ -35,6 +35,8 @@ gem "devise", "~> 4.8"
 gem "omniauth", "~> 1.9.1"
 gem "omniauth-google-oauth2", "~> 0.8.2"
 
+gem "graphql", "~> 2.0"
+
 group :development, :test do
   gem "dotenv-rails", "~> 2.7"
   gem "rspec-rails", "~> 5.1"
@@ -48,6 +50,7 @@ group :development do
   gem "annotate", "~> 3.2"
   gem "rails-erd", "~> 1.7"
   gem "web-console"
+  gem "graphql_playground-rails"
 end
 
 group :test do
