@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: "entrypoint#index"
   get "*all" => "entrypoint#index", constraints: lambda { |req|
-    ["playground", "rails", "graphql"].filter do |path|
+    ["rails", "admin", "graphql", "playground"].filter do |path|
       req.path.include?(path)
     end.blank?
   }
