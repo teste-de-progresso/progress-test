@@ -9,7 +9,6 @@ module Types
     global_id_field :id
     field :user_id, Integer, null: false
     field :subject_id, Integer
-    field :alternatives, GraphQL::Types::JSON, null: false
     field :authorship, String
     field :authorship_year, String
     field :body, String
@@ -18,6 +17,7 @@ module Types
     field :intention, String
     field :references, String
     field :support, String
+    field :alternatives, [Types::QuestionAlternativeType], null: false
     field :bloom_taxonomy, Enums::QuestionBloomTaxonomyEnum
     field :check_type, Enums::QuestionCheckTypeEnum
     field :difficulty, Enums::QuestionDifficultyEnum
