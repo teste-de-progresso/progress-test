@@ -44,6 +44,11 @@ end
 group :development do
   gem "annotate", "~> 3.2"
   gem "rails-erd", "~> 1.7"
-
   gem "web-console"
 end
+
+group :test do
+  gem "shoulda-matchers", "~> 5.1"
+end
+
+gem "faker", "~> 2.21"

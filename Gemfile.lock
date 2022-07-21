@@ -110,6 +110,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.3.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
@@ -282,6 +284,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -324,6 +328,7 @@ DEPENDENCIES
   devise (~> 4.8)
   dotenv-rails (~> 2.7)
   factory_bot_rails (~> 6.2)
+  faker (~> 2.21)
   importmap-rails
   jbuilder
   omniauth (~> 1.9.1)
@@ -335,6 +340,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails (~> 5.1)
   sassc-rails
+  shoulda-matchers (~> 5.1)
   sprockets-rails
   stimulus-rails
   turbo-rails
