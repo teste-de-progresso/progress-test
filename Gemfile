@@ -27,8 +27,11 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise", "~> 4.8"
+gem "omniauth", "~> 1.9.1"
+gem "omniauth-google-oauth2", "~> 0.8.2"
 
 group :development, :test do
+  gem "dotenv-rails", "~> 2.7"
   gem "rspec-rails", "~> 5.1"
   gem "factory_bot_rails", "~> 6.2"
 
