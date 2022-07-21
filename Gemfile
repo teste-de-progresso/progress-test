@@ -36,6 +36,7 @@ gem "omniauth", "~> 1.9.1"
 gem "omniauth-google-oauth2", "~> 0.8.2"
 
 gem "graphql", "~> 2.0"
+gem "rack-cors", "~> 1.1"
 
 group :development, :test do
   gem "dotenv-rails", "~> 2.7"
