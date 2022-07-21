@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_21_132556) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_21_132939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_132556) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "review_messages", force: :cascade do |t|
+    t.string "feedback_type"
+    t.string "content"
+    t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_review_messages_on_question_id"
+    t.index ["user_id"], name: "index_review_messages_on_user_id"
+  end
+
+  create_table "review_requests", force: :cascade do |t|
+    t.string "answered"
+    t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_review_requests_on_question_id"
+    t.index ["user_id"], name: "index_review_requests_on_user_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.bigint "category_id", null: false
@@ -125,6 +146,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_132556) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "questions", "subjects"
   add_foreign_key "questions", "users"
+  add_foreign_key "review_messages", "questions"
+  add_foreign_key "review_messages", "users"
+  add_foreign_key "review_requests", "questions"
+  add_foreign_key "review_requests", "users"
   add_foreign_key "subjects", "axes"
   add_foreign_key "subjects", "categories"
 end
