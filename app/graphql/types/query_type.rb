@@ -4,14 +4,12 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :questions, QuestionType.connection_type, null: false do
+      argument :where, Inputs::QuestionWhereInput, required: false
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def questions(where: nil)
+      Resolvers::QuestionsQueryResolver.new(Question, context: context, where: where).resolve
     end
   end
 end

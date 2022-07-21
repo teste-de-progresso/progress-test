@@ -6,6 +6,11 @@ class ApplicationPolicy
   def initialize(user, record)
     @user = user
     @record = record
+    @roles = user.roles.map { |r| r.name.to_sym }
+  end
+
+  def is?(role)
+    @roles.any?(role)
   end
 
   def index?
