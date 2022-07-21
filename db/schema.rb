@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_21_123327) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_21_124944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_123327) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "subject_id"
+    t.jsonb "alternatives", default: [], null: false
+    t.string "authorship"
+    t.string "authorship_year"
+    t.string "bloom_taxonomy"
+    t.text "body"
+    t.string "check_type"
+    t.string "difficulty"
+    t.text "explanation"
+    t.text "instruction"
+    t.text "intention"
+    t.text "references"
+    t.string "status", default: "draft", null: false
+    t.text "support"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_questions_on_subject_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.bigint "category_id", null: false
@@ -66,6 +88,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_123327) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "questions", "subjects"
+  add_foreign_key "questions", "users"
   add_foreign_key "subjects", "axes"
   add_foreign_key "subjects", "categories"
 end
