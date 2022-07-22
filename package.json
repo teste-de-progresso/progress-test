@@ -26,10 +26,16 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build-styles": "postcss app/assets/stylesheets/tailwind.css -o app/assets/stylesheets/main.css"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6"
+    "@types/react-dom": "^18.0.6",
+    "autoprefixer": "^9.8.5",
+    "postcss": "^7.0.32",
+    "postcss-cli": "^7.1.1",
+    "postcss-import": "^12.0.1",
+    "tailwindcss": "^1.5.1"
   }
 }

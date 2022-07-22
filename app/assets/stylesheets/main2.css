@@ -1,0 +1,12 @@
+@import "./main.css";
+@import "./ckeditor-content-styles.css";
+
+.ck-editor {
+  height: 100% !important;
+}
+
+body, #root {
+  height: 100vh;
+  background-color: #f7fafc;
+  font-family: Roboto, 'Times New Roman', Times, serif;
+}
