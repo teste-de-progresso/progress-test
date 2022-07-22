@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Controller } from "react-hook-form";
 import CKEditor from "@ckeditor/ckeditor5-react";
-import * as ClassicEditor from "ckeditor5-mathtype/build/ckeditor";
+import ClassicEditor from "ckeditor5-mathtype/build/ckeditor";
 
 import { useFormProvider } from '../FormContext'
 
@@ -37,7 +37,9 @@ export const TextEditor: FC<Props> = ({ name, defaultValue }) => {
       control={control}
       name={name}
       defaultValue={defaultValue}
-      render={({ onChange, value }) => (
+      render={({
+        field: { onChange, value }
+       }) => (
         <CKEditor
           editor={ClassicEditor}
           data={value}

@@ -7,6 +7,7 @@ type Props = {
   buttons?: any,
   title: string,
   className?: string,
+  children: React.ReactNode
 }
 
 export const Modal: FC<Props> = ({

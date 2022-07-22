@@ -44,7 +44,7 @@ const FilterGroup: FC<FilterGroupProps> = ({
             <input
               type="checkbox"
               name={value}
-              ref={register}
+              {...register(value)}
               id={value}
               defaultChecked={selecteds.includes(value)}
               onClick={() => setChanged(true)}

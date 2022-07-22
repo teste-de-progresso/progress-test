@@ -97,9 +97,7 @@ export const Form: FC<Props> = ({question, onSubmit, onDraftSubmit, alert}) => {
   const handleDraftSave = () => {
     if (onDraftSubmit) {
       onDraftSubmit({...getFormattedInputValues(), status: QuestionStatus.Draft} as QuestionCreateInput)
-      reset(getValues(), {
-        isDirty: false
-      })
+      reset(getValues())
       dispatch(turnOff())
     }
   }
@@ -117,9 +115,7 @@ export const Form: FC<Props> = ({question, onSubmit, onDraftSubmit, alert}) => {
       setValidationErrors(errors)
     }
 
-    reset(getValues(), {
-      isDirty: false
-    })
+    reset(getValues())
   }
 
   return (

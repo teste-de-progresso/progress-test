@@ -61,25 +61,23 @@ export const FeaturesFormStep: FC = () => {
             </label>
             <div className="my-auto">
               <input
+                {...register('__nonused')}
                 className="my-auto"
                 type="radio"
                 id="authorship-own"
                 checked={!!ownQuestion}
-                ref={register}
                 onChange={() => handleOwnCheck("UNIFESO")}
-                name="__nonused"
               />
               <label htmlFor="authorship-own" className="ml-1">Própria</label>
             </div>
             <div className="my-auto ml-3">
               <input
+                {...register('__nonused')}
                 className="my-auto"
                 type="radio"
                 id="authorship-third"
                 checked={!ownQuestion}
-                ref={register}
                 onChange={() => handleOwnCheck("")}
-                name="__nonused"
               />
               <label htmlFor="authorship-third" className="ml-1">Outro</label>
             </div>
@@ -90,9 +88,8 @@ export const FeaturesFormStep: FC = () => {
               <div className="w-full">
                 <div style={{ maxWidth: "194px" }}>
                   <input
+                    {...register('authorship')}
                     className="block rounded p-1 w-full border-gray-400 border shadow-sm"
-                    ref={register}
-                    name="authorship"
                     defaultValue={authorship || (ownQuestion ? "UNIFESO" : "")}
                     readOnly={!!ownQuestion}
                   />
@@ -103,13 +100,12 @@ export const FeaturesFormStep: FC = () => {
               <h2 className="pr-2 pl-3 my-auto">Ano</h2>
               <div style={{ maxWidth: "62px" }}>
                 <input
+                  {...register('authorshipYear')}
                   className="w-full rounded p-1 border-gray-400 border shadow-sm"
-                  ref={register}
                   type="number"
                   min="1999"
                   max={currentYear}
                   step="1"
-                  name="authorshipYear"
                   defaultValue={authorshipYear ?? new Date().getFullYear().toString()}
                   readOnly={!!ownQuestion}
                 />
@@ -123,9 +119,8 @@ export const FeaturesFormStep: FC = () => {
             <div className="flex flex-col">
               <h2>Grau de Dificuldade</h2>
               <select
-                ref={register}
+                {...register('difficulty')}
                 className="w-full rounded p-1 border-gray-400 border shadow-sm"
-                name="difficulty"
                 defaultValue={difficulty ?? ""}
               >
                 <option />
@@ -139,9 +134,8 @@ export const FeaturesFormStep: FC = () => {
             <div className="w-full">
               <h2>Tipo</h2>
               <select
-                ref={register}
+                {...register("checkType")}
                 className="w-full rounded p-1 border-gray-400 border shadow-sm"
-                name="checkType"
                 defaultValue={checkType ?? ""}
               >
                 <option />
@@ -155,9 +149,8 @@ export const FeaturesFormStep: FC = () => {
             <div className="w-full">
               <h2>Habilidade Cognitiva</h2>
               <select
-                ref={register}
+                {...register('bloomTaxonomy')}
                 className="w-full rounded p-1 border-gray-400 border shadow-sm"
-                name="bloomTaxonomy"
                 defaultValue={bloomTaxonomy ?? ""}
               >
                 <option />
@@ -176,9 +169,8 @@ export const FeaturesFormStep: FC = () => {
         <div className="flex flex-col mt-4">
           <h2>Intenção</h2>
           <textarea
+            {...register("intention")}
             className="block rounded p-1 w-full border-gray-400 border shadow-sm"
-            ref={register}
-            name="intention"
             defaultValue={question?.intention ?? ""}
           />
         </div>

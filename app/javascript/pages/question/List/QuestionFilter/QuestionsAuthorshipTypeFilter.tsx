@@ -18,9 +18,8 @@ export const QuestionsAuthorshipTypeFilter: FC<Props> = ({ register, setChanged 
   return (
     <div>
       <select
-        ref={register}
+        {...register('authorshipYear')}
         className="w-full rounded p-1 border-gray-400 border shadow-sm"
-        name="authorshipYear"
         defaultValue={where.authorshipYear ?? ""}
         onClick={() => setChanged(true)}
       >

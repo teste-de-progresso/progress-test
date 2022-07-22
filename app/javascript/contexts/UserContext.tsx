@@ -11,14 +11,12 @@ export type UserContext = {
   user?: Query['currentUser']
   refetch: () => void
   isOnlyTeacher: boolean
-  authToken: string
 }
 
 const Context = createContext<UserContext>({
   refetch: () => {
   },
   isOnlyTeacher: false,
-  authToken: ''
 })
 
 export const useCurrentUser = (): UserContext => {
@@ -44,10 +42,9 @@ const CurrentUserQuery = gql`
 
 type Props = {
   children: any
-  authToken: string
 }
 
-export const UserContext: FC<Props> = ({ children, authToken }) => {
+export const UserContext: FC<Props> = ({ children }) => {
   const [user, setUser] = useState<Query['currentUser']>();
   const isOnlyTeacher = !!(user?.roles.includes(UserRole.Teacher) && user?.roles.length === 1)
 
@@ -67,7 +64,7 @@ export const UserContext: FC<Props> = ({ children, authToken }) => {
   if (!user) return <UnauthorizedAccess />
 
   return (
-    <Context.Provider value={{ user, refetch, isOnlyTeacher, authToken }}>
+    <Context.Provider value={{ user, refetch, isOnlyTeacher }}>
       {children}
     </Context.Provider>
   );

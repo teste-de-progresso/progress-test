@@ -31,9 +31,8 @@ export const AuthorshipFilter: FC<Props> = ({ setChanged, register }) => {
         {options.map(({ value, label }, index) => (
           <span className="mr-1 mb-2 sm:mb-0 sm:mr-0" key={label}>
             <input
-              ref={register}
+              ref={register('authorship')}
               type="radio"
-              name="authorship"
               value={value}
               id={value}
               defaultChecked={!index}

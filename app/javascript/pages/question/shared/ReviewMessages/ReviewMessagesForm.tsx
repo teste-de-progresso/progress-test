@@ -1,6 +1,6 @@
 import { ApolloQueryResult, gql, OperationVariables, useMutation } from "@apollo/client";
 import React, { FC, useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Prompt, useHistory } from "react-router";
 import { Button, Card } from "../../../../components";
 import { useCurrentUser } from "../../../../contexts";
@@ -52,8 +52,9 @@ export const ReviewMessageForm: FC<{
   question: Question
   refetch: (variables?: Partial<OperationVariables> | undefined) => Promise<ApolloQueryResult<Query>>
 }> = ({ question, refetch }) => {
-  const [isChangesSaved, setIsChangesSaved] = useState(true)
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, formState: {
+    isDirty
+  } } = useForm()
   const history = useHistory();
   const { user } = useCurrentUser()
 
@@ -62,26 +63,14 @@ export const ReviewMessageForm: FC<{
   const hasFeebacks = !!question.reviewMessages.nodes.length
   const questionIsFromCurrentUser = user?.id === question.user.id
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (e.target.value !== '') {
-      setIsChangesSaved(false)
-    } else {
-      setIsChangesSaved(true)
-    }
-  }
-
-  const handleSubmitClick = () => {
-    setIsChangesSaved(true)
-  }
-
-  const formSubmit = async (inputs: {
-    feedbackType: ReviewMessageFeedbackType
-    text: string
+  const formSubmit: SubmitHandler<FieldValues> = async ({
+    feedbackType,
+    text
   }) => {
     await createReviewMessage({
       variables: {
-        text: inputs.text,
-        feedbackType: questionIsFromCurrentUser ? ReviewMessageFeedbackType.Answer : inputs.feedbackType,
+        text: text,
+        feedbackType: questionIsFromCurrentUser ? ReviewMessageFeedbackType.Answer : feedbackType,
         questionId: NodeId.decode(question.id).id,
       },
     });
@@ -96,15 +85,14 @@ export const ReviewMessageForm: FC<{
   return (
     <>
       <Prompt
-        when={!isChangesSaved}
+        when={!isDirty}
         message='O parecer ainda não foi enviado, deseja continuar?'
       />
       <Card title="Parecer" className="max-w-screen-md mx-auto">
         <form onSubmit={handleSubmit(formSubmit)}>
           <textarea
-            onChange={(e) => handleTextChange(e)}
             className="w-full h-32 p-2 border-solid border-2 border-gray-700 rounded-md"
-            ref={register}
+            {...register('text')}
             name="text"
           />
           {!questionIsFromCurrentUser && REVIEW_FEEDBACK.map((item, index) => (
@@ -112,8 +100,7 @@ export const ReviewMessageForm: FC<{
               <input
                 type="radio"
                 id={item.value}
-                name="feedbackType"
-                ref={register({ required: true })}
+                {...register("feedbackType", { required: true })}
                 value={item.value}
                 className="my-auto"
                 defaultChecked={index === 0}
@@ -128,7 +115,7 @@ export const ReviewMessageForm: FC<{
             </div>
           ))}
           <div className="justify-end flex">
-            <Button type="primary" htmlType="submit" className="mt-4" onClick={handleSubmitClick}>
+            <Button type="primary" htmlType="submit" className="mt-4">
               {questionIsFromCurrentUser ? 'Responder Parecer' : 'Enviar Parecer'}
             </Button>
           </div>

@@ -43,6 +43,7 @@ export const ListItem: FC<ListItemProps> = ({ icon, text, children }) => {
 
 type ListProps = {
   className?: string
+  children: React.ReactNode
 }
 
 export const List: FC<ListProps> = ({

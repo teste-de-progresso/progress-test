@@ -38,9 +38,8 @@ export const ReviewerSelect: FC<Props> = () => {
 
   return (
     <select
-      ref={register}
+      {...register('reviewerUserId')}
       className="w-full rounded p-1 border-gray-400 border shadow-sm"
-      name="reviewerUserId"
       defaultValue={question?.reviewer?.id}
     >
       {(question?.status === undefined || question?.status === QuestionStatus.Draft) && <option />}

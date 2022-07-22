@@ -50,9 +50,8 @@ export const SubjectSelect: FC<Props> = () => {
       <div>
         <h2>Assunto</h2>
         <select
-          ref={register}
+          {...register('subjectId')}
           className="w-full rounded p-1 border-gray-400 border shadow-sm"
-          name="subjectId"
           defaultValue={question?.subject?.id ?? ""}
           onChange={(e) => setSelectedId(e.target.value)}
         >

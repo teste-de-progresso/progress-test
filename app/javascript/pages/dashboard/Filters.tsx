@@ -44,9 +44,7 @@ const FiltersForm: FC = () => {
   const {user, isOnlyTeacher} = userContext
 
   const onSubmit = (values: FilterBarForm) => {
-    reset(getValues(), {
-      isDirty: false
-    })
+    reset(getValues())
     setWhere(mapFilter(values, user?.id))
   }
 
@@ -66,7 +64,7 @@ const FiltersForm: FC = () => {
             <Input
               type="date"
               placeholder="createDate.startAt"
-              ref={register({
+              {...register('createDate.startAt',{
                 maxLength: 10,
                 minLength: 10,
               })}
@@ -76,11 +74,10 @@ const FiltersForm: FC = () => {
             <Input
               type="date"
               placeholder="createDate.endAt"
-              ref={register({
+              {...register('createDate.endAt', {
                 maxLength: 10,
                 minLength: 10,
               })}
-              name={"createDate.endAt"}
               label={"Até"}
             />
           </div>
@@ -96,8 +93,7 @@ const FiltersForm: FC = () => {
               id={"fromOtherUsers"}
               type="checkbox"
               placeholder="fromOtherUsers"
-              ref={register}
-              name={"fromOtherUsers"}
+              {...register('fromOtherUsers')}
             />
           </span>
       )}

@@ -4,23 +4,24 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import { Appbar } from "./components";
-import { ApolloContext } from "./contexts";
+import { ApolloContext, UserContext } from "./contexts";
 import { PrivateRoutes } from "./routes";
 import { store } from "./services/store";
 
 export const App = () => {
   return (
-  <ApolloContext>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Appbar />
-        <PrivateRoutes />
-      </BrowserRouter>
-    </Provider>
-  </ApolloContext>
+    <ApolloContext>
+      <UserContext>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Appbar />
+            <PrivateRoutes />
+          </BrowserRouter>
+        </Provider>
+      </UserContext>
+    </ApolloContext>
   );
-}
-
+};
 
 const container = document.getElementById("app");
 

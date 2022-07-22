@@ -31,9 +31,8 @@ export const QuestionsSubjectFilter: FC<Props> = ({ register, setChanged }) => {
   return (
     <div>
       <select
-        ref={register}
+        {...register('subjectId')}
         className="w-full rounded p-1 border-gray-400 border shadow-sm"
-        name="subjectId"
         defaultValue={where.subjectId ?? ""}
         onClick={() => setChanged(true)}
       >
