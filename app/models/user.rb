@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  avatar_url             :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string           not null
@@ -29,4 +30,10 @@ class User < ApplicationRecord
   has_and_belongs_to_many :roles
 
   validates :name, presence: true
+
+  def self.from_omniauth(email, avatar_url)
+    @user = User.find_by!(email: email)
+    @user.update(avatar_url: avatar_url)
+    @user
+  end
 end

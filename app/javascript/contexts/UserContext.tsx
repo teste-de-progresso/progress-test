@@ -1,23 +1,18 @@
-import React, {
-  createContext, useContext, useState, FC
-} from "react";
-import { useQuery, gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
+import React, { createContext, FC, useContext } from "react";
 
-import { Query, UserRole } from "../__generated__/graphql-schema";
 import { UnauthorizedAccess } from "../pages/session";
 import { Loading } from "../pages/shared";
+import { Query, UserRole } from "../__generated__/graphql-schema";
 
 export type UserContext = {
-  user?: Query['currentUser']
-  refetch: () => void
-  isOnlyTeacher: boolean
-}
+  user?: Query["currentUser"];
+  isOnlyTeacher: boolean;
+};
 
 const Context = createContext<UserContext>({
-  refetch: () => {
-  },
   isOnlyTeacher: false,
-})
+});
 
 export const useCurrentUser = (): UserContext => {
   const context = useContext(Context);
@@ -30,41 +25,33 @@ export const useCurrentUser = (): UserContext => {
 };
 
 const CurrentUserQuery = gql`
-    query CurrentUserQuery {
-        currentUser {
-            id
-            name
-            email
-            roles
-        }
+  query CurrentUserQuery {
+    currentUser {
+      id
+      name
+      email
+      roles
+      avatarUrl
     }
+  }
 `;
 
 type Props = {
-  children: any
-}
+  children: any;
+};
 
 export const UserContext: FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<Query['currentUser']>();
-  const isOnlyTeacher = !!(user?.roles.includes(UserRole.Teacher) && user?.roles.length === 1)
+  const { loading, data } = useQuery<Query>(CurrentUserQuery);
+  const user = data?.currentUser;
+  const isOnlyTeacher = !!(
+    user?.roles.includes(UserRole.Teacher) && user?.roles.length === 1
+  );
 
-  const { refetch: refetchUserQuery, loading } = useQuery<Query>(CurrentUserQuery, {
-    onCompleted: ({ currentUser }) => {
-      setUser(currentUser)
-    }
-  })
-
-  const refetch = async () => {
-    const { data: { currentUser } } = await refetchUserQuery()
-    setUser(currentUser)
-  }
-
-  if (loading) return <Loading />
-
-  if (!user) return <UnauthorizedAccess />
+  if (loading) return <Loading />;
+  if (!user?.roles.length) return <UnauthorizedAccess />;
 
   return (
-    <Context.Provider value={{ user, refetch, isOnlyTeacher }}>
+    <Context.Provider value={{ user, isOnlyTeacher }}>
       {children}
     </Context.Provider>
   );

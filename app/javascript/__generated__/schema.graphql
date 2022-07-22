@@ -614,6 +614,7 @@ type UpdateQuestionPayload {
 }
 
 type User {
+  avatarUrl: String
   email: String!
   id: ID!
   name: String!

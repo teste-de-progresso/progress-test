@@ -4,7 +4,6 @@ export * from "./Button";
 export * from "./Card";
 export * from "./CardGrid";
 export * from "./InputGroup";
-export * from "./AvatarEditor";
 export * from "./Navegator";
 export * from "./UserAvatar";
 export * from "./Dialog";

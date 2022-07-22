@@ -1,27 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
+import { CurrentUserAvatar, Navigator } from "../../components";
 import { useCurrentUser } from "../../contexts";
-import { AvatarEditor, Navigator, CurrentUserAvatar } from "../../components";
 
 export const Profile = () => {
-  const [avatarEditorIsOpen, setAvatarEditorIsOpen] = useState(false);
   const { user } = useCurrentUser();
 
   return (
     <>
-      <AvatarEditor
-        isOpen={avatarEditorIsOpen}
-        setIsOpen={setAvatarEditorIsOpen}
-      />
       <Navigator home />
       <div className="bg-gray-100 w-full my-3">
         <main>
           <div className="flex items-center flex-col max-w-4xl m-auto">
             <div className="bg-white shadow border border-gray-100 flex flex-col items-center rounded p-4 w-full mt-12 mb-4 relative">
               <div
-                className="w-20 absolute cursor-pointer"
+                className="w-20 absolute"
                 style={{ top: "-3.10rem" }}
-                onClick={() => setAvatarEditorIsOpen(true)}
               >
                 <CurrentUserAvatar />
               </div>

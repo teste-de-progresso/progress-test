@@ -10,12 +10,19 @@ type Props = {
 export const UserAvatar: FC<Props> = ({user, className}) => {
   return (
     <div className={`rounded-full border-2 border-primary-light shadow ${className || ''}`}>
-      <BoringAvatar
-        size={"100%"}
-        name={user.name}
-        variant="pixel"
-        colors={["#595F72", "#575D90", "#84A07C", "#C3D350", "#E6F14A"]}
-      />
+      {user.avatarUrl ?
+        <img
+          className="rounded-full"
+          src={user.avatarUrl}
+          alt={`Avatar do usuário ${user.name}`}
+        />
+        : <BoringAvatar
+          size={"100%"}
+          name={user.name}
+          variant="pixel"
+          colors={["#595F72", "#575D90", "#84A07C", "#C3D350", "#E6F14A"]}
+        />
+      }
     </div>
   )
 };

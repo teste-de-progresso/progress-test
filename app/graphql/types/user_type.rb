@@ -8,6 +8,7 @@ module Types
     field :name, String, null: false
     field :email, String, null: false
     field :roles, [Enums::RoleEnum], null: false
+    field :avatar_url, String, null: true
 
     def roles
       object.roles.map(&:name)
