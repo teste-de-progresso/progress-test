@@ -36,6 +36,8 @@ class Question < ApplicationRecord
 
   belongs_to :user
   belongs_to :subject, optional: true
+  has_many :review_requests, dependent: :destroy
+  has_many :review_messages, dependent: :destroy
 
   enumerize :status, in: %i[draft waiting_review with_requested_changes approved registered]
   enumerize :difficulty, in: %i[easy medium hard]
@@ -52,4 +54,8 @@ class Question < ApplicationRecord
     ordering_or_ranking
     constant_alternatives
   ]
+
+  def reviewer
+    review_requests.last&.user
+  end
 end

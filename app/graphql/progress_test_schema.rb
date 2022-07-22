@@ -1,5 +1,5 @@
 class ProgressTestSchema < GraphQL::Schema
-  DEFINITION_DUMP_PATH = "app/graphql/__generated__/schema.graphql"
+  DEFINITION_DUMP_PATH = "app/javascript/__generated__/schema.graphql"
 
   mutation(Types::MutationType)
   query(Types::QueryType)
@@ -30,11 +30,14 @@ class ProgressTestSchema < GraphQL::Schema
 
   # Return a string UUID for `object`
   def self.id_from_object(object, type_definition, query_ctx)
-    object.to_gid_param
+    # object.to_gid_param
+    GraphQL::Schema::UniqueWithinType.encode(type_definition.name, object.id)
   end
 
   # Given a string UUID, find the object
   def self.object_from_id(global_id, query_ctx)
-    GlobalID.find(global_id)
+    # GlobalID.find(global_id)
+    type_name, item_id = GraphQL::Schema::UniqueWithinType.decode(global_id)
+    type_name.constantize.model.find(item_id)
   end
 end

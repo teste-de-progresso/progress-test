@@ -1,5 +1,3 @@
-const host = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000";
-
 export type LoginCredentails = {
   email: string;
   password: string;
@@ -11,7 +9,7 @@ export const authentication = {
       user: credentails,
     };
 
-    const response = await fetch(`${host}/login`, {
+    const response = await fetch(`/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -29,7 +27,7 @@ export const authentication = {
   resetPasswordEmail: async (email: string) => {
     const payload = { user: { email } };
 
-    const response = await fetch(`${host}/password`, {
+    const response = await fetch(`/password`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -59,7 +57,7 @@ export const authentication = {
       },
     };
 
-    const response = await fetch(`${host}/password`, {
+    const response = await fetch(`/password`, {
       method: "PUT",
       headers: {
         Accept: "application/json",

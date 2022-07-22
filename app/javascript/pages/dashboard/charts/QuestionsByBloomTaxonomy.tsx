@@ -55,12 +55,12 @@ export const QuestionByBloomTaxonomy: FC = () => {
   const {loading, data} = useQuery<QuestionsByBloomTaxonomyCountQuery>(
     QuestionsByBloomTaxonomyCount, {
       variables: {
-        rememberWhere: {bloomTaxonomy: ['remember'], ...where},
-        understandWhere: {bloomTaxonomy: ['understand'], ...where},
-        applyWhere: {bloomTaxonomy: ['apply'], ...where},
-        analyzeWhere: {bloomTaxonomy: ['analyze'], ...where},
-        evaluateWhere: {bloomTaxonomy: ['evaluate'], ...where},
-        createWhere: {bloomTaxonomy: ['create'], ...where},
+        rememberWhere: {bloomTaxonomy: ['REMEMBER'], ...where},
+        understandWhere: {bloomTaxonomy: ['UNDERSTAND'], ...where},
+        applyWhere: {bloomTaxonomy: ['APPLY'], ...where},
+        analyzeWhere: {bloomTaxonomy: ['ANALYZE'], ...where},
+        evaluateWhere: {bloomTaxonomy: ['EVALUATE'], ...where},
+        createWhere: {bloomTaxonomy: ['CREATE'], ...where},
       }
     })
 

@@ -42,7 +42,6 @@ export const ReviewMessagesFragments = gql`
         text
         user {
           name
-          avatarUrl
         }
         createdAt
       }

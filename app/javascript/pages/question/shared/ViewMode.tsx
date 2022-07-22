@@ -3,7 +3,6 @@ import { gql } from "@apollo/client";
 
 import { Card } from "../../../components";
 import { Question } from "../../../__generated__/graphql-schema";
-import { loadWIRISplugin } from "../../../utils/plugins";
 import { BLOOM_TAXONOMY, DIFFICULTY } from "../../../utils/types";
 
 export const ViewModeFragments = gql`
@@ -66,8 +65,6 @@ export const ViewMode: FC<Props> = ({ questionData: question }) => {
 
   const difficulty = DIFFICULTY.find((item) => question.difficulty === item.value)?.label
   const bloomTaxonomy = BLOOM_TAXONOMY.find((item) => question.bloomTaxonomy === item.value)?.label
-
-  loadWIRISplugin()
 
   return (
     <div className="max-w-screen-lg">

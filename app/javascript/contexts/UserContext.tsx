@@ -37,7 +37,6 @@ const CurrentUserQuery = gql`
             id
             name
             email
-            avatarUrl
             roles
         }
     }
