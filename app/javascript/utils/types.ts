@@ -1,27 +1,27 @@
 export const CHECK_TYPE = [
-  { value: "unique_answer", label: "Resposta Única" },
-  { value: "incomplete_affirmation", label: "Afirmação Incompleta" },
-  { value: "multiple_answer", label: "Resposta Múltipla" },
-  { value: "negative_focus", label: "Foco Negativo" },
-  { value: "assertion_and_reason", label: "Asserção e Razão" },
-  { value: "gap", label: "Lacuna" },
-  { value: "interpretation", label: "Interpretação" },
-  { value: "association", label: "Associação" },
-  { value: "ordering_or_ranking", label: "Ordenação ou Seriação" },
-  { value: "constant_alternatives", label: "Alternativas Constantes" },
+  { value: "UNIQUE_ANSWER", label: "Resposta Única" },
+  { value: "INCOMPLETE_AFFIRMATION", label: "Afirmação Incompleta" },
+  { value: "MULTIPLE_ANSWER", label: "Resposta Múltipla" },
+  { value: "NEGATIVE_FOCUS", label: "Foco Negativo" },
+  { value: "ASSERTION_AND_REASON", label: "Asserção e Razão" },
+  { value: "GAP", label: "Lacuna" },
+  { value: "INTERPRETATION", label: "Interpretação" },
+  { value: "ASSOCIATION", label: "Associação" },
+  { value: "ORDERING_OR_RANKING", label: "Ordenação ou Seriação" },
+  { value: "CONSTANT_ALTERNATIVES", label: "Alternativas Constantes" },
 ];
 
 export const DIFFICULTY = [
-  { value: "easy", label: "Fácil" },
-  { value: "medium", label: "Média" },
-  { value: "hard", label: "Difícil" },
+  { value: "EASY", label: "Fácil" },
+  { value: "MEDIUM", label: "Média" },
+  { value: "HARD", label: "Difícil" },
 ];
 
 export const BLOOM_TAXONOMY = [
-  { value: "remember", label: "Recordar" },
-  { value: "understand", label: "Compreender" },
-  { value: "apply", label: "Aplicar" },
-  { value: "analyze", label: "Analisar" },
-  { value: "evaluate", label: "Avaliar" },
-  { value: "create", label: "Criar" },
+  { value: "REMEMBER", label: "Recordar" },
+  { value: "UNDERSTAND", label: "Compreender" },
+  { value: "APPLY", label: "Aplicar" },
+  { value: "ANALYZE", label: "Analisar" },
+  { value: "EVALUATE", label: "Avaliar" },
+  { value: "CREATE", label: "Criar" },
 ];

@@ -75,16 +75,16 @@ export const QuestionByCheckType: FC = () => {
   const {loading, data} = useQuery<QuestionsByCheckTypeCountQuery>(
     QuestionsByCheckTypeCount, {
       variables: {
-        uniqueAnswer: {checkType: ['unique_answer'], ...where},
-        incompleteAffirmation: {checkType: ['incomplete_affirmation'], ...where},
-        multipleAnswer: {checkType: ['multiple_answer'], ...where},
-        negativeFocus: {checkType: ['negative_focus'], ...where},
-        assertionAndReason: {checkType: ['assertion_and_reason'], ...where},
-        gap: {checkType: ['gap'], ...where},
-        interpretation: {checkType: ['interpretation'], ...where},
-        association: {checkType: ['association'], ...where},
-        orderingOrRanking: {checkType: ['ordering_or_ranking'], ...where},
-        constantAlternatives: {checkType: ['constant_alternatives'], ...where},
+        uniqueAnswer: {checkType: ['UNIQUE_ANSWER'], ...where},
+        incompleteAffirmation: {checkType: ['INCOMPLETE_AFFIRMATION'], ...where},
+        multipleAnswer: {checkType: ['MULTIPLE_ANSWER'], ...where},
+        negativeFocus: {checkType: ['NEGATIVE_FOCUS'], ...where},
+        assertionAndReason: {checkType: ['ASSERTION_AND_REASON'], ...where},
+        gap: {checkType: ['GAP'], ...where},
+        interpretation: {checkType: ['INTERPRETATION'], ...where},
+        association: {checkType: ['ASSOCIATION'], ...where},
+        orderingOrRanking: {checkType: ['ORDERING_OR_RANKING'], ...where},
+        constantAlternatives: {checkType: ['CONSTANT_ALTERNATIVES'], ...where},
       }
     })
 

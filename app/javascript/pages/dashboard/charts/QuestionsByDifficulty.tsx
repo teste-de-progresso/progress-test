@@ -40,9 +40,9 @@ export const QuestionsByDifficulty: FC = () => {
   const {loading, data} = useQuery<QuestionsByDifficultyCountQuery>(
     QuestionsByDifficultyCount, {
       variables: {
-        easyWhere: {difficulty: ['easy'], ...where},
-        mediumWhere: {difficulty: ['medium'], ...where},
-        hardWhere: {difficulty: ['hard'], ...where},
+        easyWhere: {difficulty: ['EASY'], ...where},
+        mediumWhere: {difficulty: ['MEDIUM'], ...where},
+        hardWhere: {difficulty: ['HARD'], ...where},
       },
     })
 
