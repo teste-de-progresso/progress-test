@@ -1,14 +1,26 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { ApolloContext } from "./contexts/ApolloContext";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-const App = () => {
+import { Appbar } from "./components";
+import { ApolloContext } from "./contexts";
+import { PrivateRoutes } from "./routes";
+import { store } from "./services/store";
+
+export const App = () => {
   return (
-    <ApolloContext>
-      <div>Hello, Rails 7!</div>
-    </ApolloContext>
+  <ApolloContext>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Appbar />
+        <PrivateRoutes />
+      </BrowserRouter>
+    </Provider>
+  </ApolloContext>
   );
-};
+}
+
 
 const container = document.getElementById("app");
 
