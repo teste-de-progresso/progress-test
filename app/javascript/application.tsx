@@ -1,14 +1,19 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-
-const container = document.getElementById('app');
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { ApolloContext } from "./contexts/ApolloContext";
 
 const App = () => {
-  return (<div>Hello, Rails 7!</div>)
-}
+  return (
+    <ApolloContext>
+      <div>Hello, Rails 7!</div>
+    </ApolloContext>
+  );
+};
+
+const container = document.getElementById("app");
 
 if (container) {
-  const root = createRoot(container); // createRoot(container!) if you use TypeScript
+  const root = createRoot(container);
 
   root.render(<App />);
 }
