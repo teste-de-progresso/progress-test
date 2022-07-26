@@ -11,6 +11,7 @@ import { classNames } from '../../utils';
 import { DashboardRoutePaths, QuestionRoutePaths, SessionRoutePaths } from '../../routes'
 import { turnOff } from '../../services/store/unsavedChanges';
 import { CurrentUserAvatar } from "../CurrentUserAvatar";
+import { localFetch } from '../../utils/localFetch';
 
 const UserMenu: FC = () => {
   const { user } = useCurrentUser();
@@ -21,8 +22,14 @@ const UserMenu: FC = () => {
 
   const doLogout = () => {
     setConfirmLogout(false)
+
     dispatch(turnOff())
-    history.push('/')
+
+    localFetch('/users/sign_out', {
+      method: 'DELETE'
+    }).then(() => {
+      window.location.href = '/'
+    })
   }
 
   const handleLogout = () => {

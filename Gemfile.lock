@@ -249,6 +249,9 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
+    rails-i18n (7.0.5)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.3.1)
       actionpack (= 7.0.3.1)
       activesupport (= 7.0.3.1)
@@ -357,6 +360,7 @@ DEPENDENCIES
   rack-cors (~> 1.1)
   rails (~> 7.0.3, >= 7.0.3.1)
   rails-erd (~> 1.7)
+  rails-i18n (~> 7.0)
   redis (~> 4.0)
   rspec-rails (~> 5.1)
   sassc-rails

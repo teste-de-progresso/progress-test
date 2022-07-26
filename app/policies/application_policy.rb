@@ -6,7 +6,7 @@ class ApplicationPolicy
   def initialize(user, record)
     @user = user
     @record = record
-    @roles = user.roles.map { |r| r.name.to_sym }
+    @roles = user.roles
   end
 
   def is?(role)

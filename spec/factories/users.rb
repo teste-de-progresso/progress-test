@@ -10,6 +10,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  roles                  :string           default([]), is an Array
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

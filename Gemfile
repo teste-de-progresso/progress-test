@@ -23,6 +23,8 @@ gem "redis", "~> 4.0"
 
 gem "bootsnap", require: false
 
+gem "rails-i18n", "~> 7.0"
+
 gem "image_processing", "~> 1.2"
 
 gem "pundit", "~> 2.2"

@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   post "/graphql", to: "graphql#execute"
 
-  ActiveAdmin.routes(self)
+
+  authenticate :user, ->(u) { u.admin? } do
+    ActiveAdmin.routes(self)
+  end
+
 
   if Rails.env.development?
     mount GraphqlPlayground::Rails::Engine, at: "/playground", graphql_path: "/graphql"
