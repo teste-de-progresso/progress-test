@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import { Dashboard } from '../pages/dashboard'
 import { List, New, Show, Review, Edit } from "../pages/question";
-import { Profile, SignIn } from "../pages/session";
+import { Profile } from "../pages/session";
 import { QuestionRoutePaths, SessionRoutePaths, DashboardRoutePaths } from './paths'
 
 export const PrivateRoutes = () => (
@@ -18,11 +18,5 @@ export const PrivateRoutes = () => (
     <Route exact path={QuestionRoutePaths.show} component={Show} />
     <Route exact path={QuestionRoutePaths.edit} component={Edit} />
     <Route exact path={QuestionRoutePaths.review} component={Review} />
-  </Switch>
-);
-
-export const PublicRoutes = () => (
-  <Switch>
-    <Route path={SessionRoutePaths.signIn} component={SignIn} />
   </Switch>
 );

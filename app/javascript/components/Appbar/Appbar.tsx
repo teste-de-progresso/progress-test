@@ -13,6 +13,9 @@ import { turnOff } from '../../services/store/unsavedChanges';
 import { CurrentUserAvatar } from "../CurrentUserAvatar";
 import { localFetch } from '../../utils/localFetch';
 
+import unifesoLogoCompact from "../../assets/images/logoImgUnifeso.png";
+import unifesoLogo from "../../assets/images/unifeso-logo-branco.svg";
+
 const UserMenu: FC = () => {
   const { user } = useCurrentUser();
   const history = useHistory();
@@ -205,12 +208,12 @@ const Logo: FC = () => (
     <img
       alt="Símbolo do Unifeso"
       className="hidden md:block h-12 w-auto"
-      src={'unifesoLogo'}
+      src={unifesoLogo}
     />
     <img
       alt="Logotipo do Unifeso"
       className="md:hidden h-12 w-auto"
-      src={'unifesoLogoCompact'}
+      src={unifesoLogoCompact}
     />
   </div>
 )

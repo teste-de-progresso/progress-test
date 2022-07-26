@@ -1,0 +1,18 @@
+<div class="w-screen h-screen bg-primary-normal grid place-items-center">
+  <div>
+    <img
+      alt="Logo do Unifeso"
+      src="https://www.unifeso.edu.br/images/logo/UNIFESO-BRANCO.png"
+      style="width: 85%; margin: auto"
+    />
+    <div class="grid place-items-center">
+      <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to "Faça login no Google",
+          omniauth_authorize_path(resource_name, provider),
+          method: :post,
+          class: "transition duration-300 ease-in-out block text-center cursor-pointer p-2 px-8 rounded shadow-lg hover:shadow-lg bg-gray-200 hover:bg-gray-400 text-gray-800"
+        %>
+      <% end %>
+    </div>
+  </div>
+</div>
