@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+    attributes:
+      user:
+        name: Nome
+
+  enumerize:
+    user:
+      roles:
+        admin: Administrador
+        nde: NDE
+        coordinator: Coordenador
+        center_director: Diretor de Centro
+        pro_rector: Pró-Reitor
+        teacher: Professor

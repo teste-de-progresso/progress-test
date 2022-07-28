@@ -1,0 +1,53 @@
+pt-BR:
+  activerecord:
+    models:
+      question:
+        one: Questão
+        other: Questões
+    attributes:
+      question:
+        user: Usuário
+        subject: Assunto
+        alternatives: Alternativas
+        authorship: Autoria
+        authorship_year: Ano de Autoria
+        bloom_taxonomy: Taxonomia de Bloom
+        body: Corpo
+        check_type: Tipo de Marcação
+        difficulty: Dificuldade
+        explanation: Explicação
+        instruction: Instrução
+        intention: Intenção
+        references: Referências
+        status: Status
+        support: Suporte
+  enumerize:
+    question:
+      check_type:
+        unique_answer: Resposta Única
+        incomplete_affirmation: Afirmação Incompleta
+        multiple_answer: Resposta Múltipla
+        negative_focus: Foco Negativo
+        assertion_and_reason: Asserção e Razão
+        gap: Lacuna
+        interpretation: Interpretação
+        association: Associação
+        ordering_or_ranking: Ordenação ou Seriação
+        constant_alternatives: Alternativas Constantes
+      difficulty:
+        easy: Fácil
+        medium: Média
+        hard: Difícil
+      bloom_taxonomy:
+        remember: Recordar
+        understand: Compreender
+        apply: Aplicar
+        analyze: Analisar
+        evaluate: Avaliar
+        create: Criar
+      status:
+        draft: Rascunhos
+        waiting_review: Aguardando Revisão
+        with_requested_changes: Com Alterações Solicitadas
+        approved: Aprovada
+        registered: Registrada
