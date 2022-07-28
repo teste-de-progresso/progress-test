@@ -1,0 +1,44 @@
+version: "3.6"
+
+x-rails: &rails
+  image: progress-test
+  volumes:
+    - .:/progress-test:delegated
+    - gems:/home/progress-test:delegated
+  environment:
+    - DISABLE_SPRING=1
+    - DATABASE_URL=postgres://postgres:postgres@db:5432
+  depends_on:
+    - db
+
+services:
+  web:
+    <<: *rails
+    container_name: progress-test-web
+    command: >
+      sh -c '
+        bundle check || bundle install &&
+        rm -f tmp/pids/server.pid &&
+        rails s -b 0.0.0.0'
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres:11.3-alpine
+    container_name: progress-test-db
+    volumes:
+      - pg-data:/var/lib/postgresql/data:delegated
+      - ./scripts:/scripts:delegated
+      - ./tmp:/tmp:delegated
+    ports:
+      - "5435:5432"
+
+  gems:
+    image: busybox:latest
+    container_name: progress-test-gems
+    volumes:
+      - /gems
+
+volumes:
+  gems:
+  pg-data:

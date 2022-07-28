@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd $(dirname $(dirname $0))
+
+yellow_text(){
+  echo "`tput setaf 3`$@`tput sgr0`"
+}
+
+green_text(){
+  echo "`tput setaf 2`$@`tput sgr0`"
+}
+
+build_docker_image(){
+  if [ -f Dockerfile  ]; then
+    docker build --build-arg UID=$UID -t progress-test .
+  else
+    red_text 'Could not find Dockerfile. WTF?'
+    return
+  fi
+}
+
+##########################
+### Build docker image ###
+##########################
+
+yellow_text 'Building progress-test image, this might take a while...'
+
+if [[ $(docker images | grep progress-test) ]]; then
+  green_text 'Found progress-test docker image. Do you want to rebuild it? (y/N)'
+  read build_image
+
+  if [[ $build_image == 'y' ]]; then
+    build_docker_image
+  else
+    yellow_text 'Ok, skipping...'
+  fi
+else
+  build_docker_image
+fi
+
+######################
+### Database setup ###
+######################
+
+yellow_text 'Preparing the database...'
+docker-compose run --rm web rails db:create
+
+
+green_text 'Everything ready to run!'
