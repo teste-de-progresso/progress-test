@@ -31,7 +31,11 @@ export const whereDefaultState = (userContext: UserContext) => (
   userContext.isOnlyTeacher ? {userId: userContext.user?.id} : {}
 )
 
-export const DashboardProvider: FC = ({children}) => {
+type DashboardProviderProps = {
+  children: React.ReactNode
+}
+
+export const DashboardProvider = ({children}: DashboardProviderProps) => {
   const userContext = useCurrentUser()
   const [where, setWhere] = useState<QuestionWhereInput>(whereDefaultState(userContext))
   const providerValue = useMemo(() => ({where, setWhere}), [

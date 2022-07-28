@@ -24,5 +24,7 @@ class Subject < ApplicationRecord
   belongs_to :category
   belongs_to :axis
 
+  has_many :questions
+
   validates :name, presence: true, uniqueness: true
 end

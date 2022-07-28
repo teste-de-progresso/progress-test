@@ -1,4 +1,4 @@
-import React, {FC,} from 'react'
+import React from 'react'
 
 import {DashboardProvider} from './DashboardContext'
 import {
@@ -9,7 +9,7 @@ import {
 } from './charts'
 import {Filters} from './Filters'
 
-export const Dashboard: FC = () => (
+export const Dashboard = () => (
   <DashboardProvider>
     <main className="max-h-screen sm:px-8 gap-2 pt-2 sm:pt-4">
       <Filters/>
