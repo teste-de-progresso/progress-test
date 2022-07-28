@@ -12,9 +12,8 @@ import { DashboardRoutePaths, QuestionRoutePaths, SessionRoutePaths } from '../.
 import { turnOff } from '../../services/store/unsavedChanges';
 import { CurrentUserAvatar } from "../CurrentUserAvatar";
 import { localFetch } from '../../utils/localFetch';
-
-import unifesoLogoCompact from "../../assets/images/logoImgUnifeso.png";
-import unifesoLogo from "../../assets/images/unifeso-logo-branco.svg";
+import { notEmpty } from '../../utils/notEmpty';
+import { UserRole } from '../../__generated__/graphql-schema';
 
 const UserMenu: FC = () => {
   const { user } = useCurrentUser();
@@ -61,7 +60,16 @@ const UserMenu: FC = () => {
     }
   }
 
-  const menuItems = [
+  type MenuItem = {
+    onClick: Function
+    label: string
+  }
+
+  const menuItems: MenuItem[] = [
+    (user?.roles.includes(UserRole.Admin) && {
+      onClick: () => { window.location.href = '/admin'},
+      label: 'Painel de Administração'
+    }),
     {
       onClick: () => { handleLinkClick(SessionRoutePaths.show) },
       label: 'Perfil'
@@ -70,7 +78,7 @@ const UserMenu: FC = () => {
       onClick: handleLogout,
       label: 'Sair'
     }
-  ]
+  ].filter(notEmpty)
 
   return (
     <>
