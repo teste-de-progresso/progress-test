@@ -44,6 +44,7 @@ RUN apk update && \
     nodejs \
     yarn \
     less \
+    bash \
     graphviz \
     shared-mime-info && \
   bundle config jobs $(nproc --all) && \

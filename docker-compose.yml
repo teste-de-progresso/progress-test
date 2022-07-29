@@ -5,6 +5,7 @@ x-rails: &rails
   volumes:
     - .:/progress-test:delegated
     - gems:/home/progress-test:delegated
+    - node_modules:/progress-test/node_modules:delegated
   environment:
     - DISABLE_SPRING=1
     - DATABASE_URL=postgres://postgres:postgres@db:5432
@@ -18,8 +19,7 @@ services:
     command: >
       sh -c '
         bundle check || bundle install &&
-        rm -f tmp/pids/server.pid &&
-        rails s -b 0.0.0.0'
+        bin/rails server -b 0.0.0.0 -p 3000 | yarn build --watch'
     ports:
       - "3000:3000"
 
@@ -42,3 +42,4 @@ services:
 volumes:
   gems:
   pg-data:
+  node_modules:
