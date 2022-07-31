@@ -36,6 +36,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  before_validation :set_random_password, on: :create
+
+
   roles.values.each do |role|
     define_method "#{role}?" do
       roles.include?(role)
@@ -46,5 +49,11 @@ class User < ApplicationRecord
     User.find_by(email: email).tap do |user|
       user.update(avatar_url: avatar_url) unless user.nil?
     end
+  end
+
+  private
+
+  def set_random_password
+    self.password = SecureRandom.alphanumeric
   end
 end
