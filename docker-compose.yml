@@ -13,15 +13,22 @@ x-rails: &rails
     - db
 
 services:
-  web:
+  rails:
     <<: *rails
-    container_name: progress-test-web
+    container_name: progress-test-rails
     command: >
       sh -c '
         bundle check || bundle install &&
-        bin/rails server -b 0.0.0.0 -p 3000 | yarn build --watch'
+        rm -f tmp/pids/server.pid &&
+        rails s -b 0.0.0.0'
     ports:
       - "3000:3000"
+
+  esbuild:
+    <<: *rails
+    container_name: progress-test-esbuild
+    command:
+      sh -c 'yarn build --watch'
 
   db:
     image: postgres:11.3-alpine
