@@ -78,6 +78,9 @@ pt-BR:
       action_label: "%{title} Selecionado"
       labels:
         destroy: "Excluir"
+    scopes:
+      all: Ativos
+      trashed: Excluídos
     comments:
       created_at: "Criado em"
       resource_type: "Tipo de Objeto"
@@ -141,3 +144,6 @@ pt-BR:
       block: "Lista"
       grid: "Grid"
       blog: "Blog"
+    user:
+      succesfully_destroyed: 'Usuário removido com sucesso.'
+      already_destroyed: "Usuário já está removido."

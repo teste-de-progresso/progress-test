@@ -4,6 +4,7 @@
 #
 #  id                     :bigint           not null, primary key
 #  avatar_url             :string
+#  deleted_at             :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string           not null
@@ -20,6 +21,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  include Trashable
   extend Enumerize
 
   devise :database_authenticatable,
@@ -37,7 +39,6 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   before_validation :set_random_password, on: :create
-
 
   roles.values.each do |role|
     define_method "#{role}?" do
