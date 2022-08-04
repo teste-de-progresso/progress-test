@@ -37,7 +37,6 @@ COPY Gemfile* package.json yarn.lock $APP_PATH
 # shared-mime-info ref: https://vtex.slack.com/archives/CE16Q9XRT/p1616716948056900
 RUN apk update && \
   apk add --no-cache \
-    watchman \
     git \
     build-base \
     postgresql-dev \

@@ -32,8 +32,6 @@ ActiveAdmin.register User do
     column :name
     column :created_at
     actions
-
-    actions
   end
 
   filter :email
