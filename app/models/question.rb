@@ -32,6 +32,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Question < ApplicationRecord
+  include Trashable
   extend Enumerize
 
   belongs_to :user

@@ -147,3 +147,6 @@ pt-BR:
     user:
       succesfully_destroyed: 'Usuário removido com sucesso.'
       already_destroyed: "Usuário já está removido."
+    question:
+      succesfully_destroyed: 'Questão removido com sucesso.'
+      already_destroyed: "Questão já está removido."

@@ -45,7 +45,7 @@ fi
 ######################
 
 yellow_text 'Preparing the database...'
-docker-compose run --rm web rails db:create
+docker-compose run --rm rails rails db:create
 
 
 green_text 'Everything ready to run!'
