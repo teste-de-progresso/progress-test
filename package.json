@@ -26,6 +26,7 @@
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets --loader:.png=file --loader:.svg=file",
+    "build:watch": "esbuild --watch app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets --loader:.png=file --loader:.svg=file",
     "build-styles": "postcss app/assets/stylesheets/tailwind.css -o app/assets/stylesheets/main.css"
   },
   "devDependencies": {

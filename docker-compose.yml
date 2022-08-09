@@ -28,7 +28,7 @@ services:
     <<: *rails
     container_name: progress-test-esbuild
     command:
-      sh -c 'yarn build --watch'
+      sh -c 'sleep 9999999999 | yarn build --watch'
 
   db:
     image: postgres:11.3-alpine
