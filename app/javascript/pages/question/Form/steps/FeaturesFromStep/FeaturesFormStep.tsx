@@ -74,6 +74,7 @@ export const FeaturesFormStep: FC = () => {
               <input
                 {...register("authorshipType", { required: true })}
                 value="OTHER"
+                checked={authorship !== "UNIFESO"}
                 className="my-auto"
                 type="radio"
                 id="authorship-third"

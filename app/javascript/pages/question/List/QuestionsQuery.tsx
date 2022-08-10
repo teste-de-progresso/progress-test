@@ -80,6 +80,8 @@ export const QuestionsQuery: FC<Props> = ({ title, where, status }) => {
     })
   }
 
+  console.log(pageInfo)
+
   return (
     <QuestionsList
       title={title}
