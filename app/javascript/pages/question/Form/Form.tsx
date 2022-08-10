@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react'
-import {useForm} from 'react-hook-form';
+import {FieldValue, FieldValues, useForm} from 'react-hook-form';
 import {ExclamationCircleIcon} from '@heroicons/react/outline';
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -57,7 +57,14 @@ export const Form: FC<Props> = ({question, onSubmit, onDraftSubmit, alert}) => {
   const [validationErrors, setValidationErrors] = useState<string[]>([])
   const [confirmSaveDialogIsOpen, setConfirmFinishDialogIsOpen] = useState(false)
   const [leaveDialogIsOpen, setLeaveDialogIsOpen] = useState(false)
-  const {register, control, setValue, getValues, reset, formState} = useForm()
+  const formHooks = useForm<FieldValues>({
+    defaultValues: {
+      authorship: 'UNIFESO',
+      authorshipYear: new Date().getFullYear().toString(),
+    }
+  })
+  const {register, control, setValue, getValues, reset, formState, resetField} = formHooks
+
   const [currentStep, setCurrentStep] = useState(0)
   const unsavedChanges = useSelector((state: RootState) => state.unsavedChanges)
   const history = useHistory()
@@ -119,7 +126,7 @@ export const Form: FC<Props> = ({question, onSubmit, onDraftSubmit, alert}) => {
   }
 
   return (
-    <FormProvider props={{question, hooks: {register, control, setValue}}}>
+    <FormProvider props={{question, hooks: formHooks }}>
       {alert && (
         <AlertV2 severity={alert.severity} text={alert.text}></AlertV2>
       )}

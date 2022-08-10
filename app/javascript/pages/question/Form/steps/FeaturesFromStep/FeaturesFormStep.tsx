@@ -25,19 +25,20 @@ export const FeaturesFragment = gql`
 `
 
 export const FeaturesFormStep: FC = () => {
-  const { question, hooks: { setValue, register } } = useFormProvider();
+  const { question, hooks: { setValue, register, formState, getValues } } = useFormProvider();
 
   const currentYear = new Date().getFullYear();
 
+  if (!question) return null
+
   const {
-    authorship,
-    authorshipYear,
     difficulty,
     bloomTaxonomy,
     checkType,
-  } = question || {} as Question
+  } = question
 
-  const [ownQuestion, setOwnQuestion] = useState<boolean>(authorship === "UNIFESO" || authorship === undefined || authorship === null);
+  const authorship = getValues('authorship')
+  const [ownQuestion, setOwnQuestion] = useState(authorship === "UNIFESO")
 
   const handleOwnCheck = (value: string) => {
     if (value === 'UNIFESO') {
@@ -61,7 +62,6 @@ export const FeaturesFormStep: FC = () => {
             </label>
             <div className="my-auto">
               <input
-                {...register('__nonused')}
                 className="my-auto"
                 type="radio"
                 id="authorship-own"
@@ -72,7 +72,6 @@ export const FeaturesFormStep: FC = () => {
             </div>
             <div className="my-auto ml-3">
               <input
-                {...register('__nonused')}
                 className="my-auto"
                 type="radio"
                 id="authorship-third"
@@ -90,7 +89,6 @@ export const FeaturesFormStep: FC = () => {
                   <input
                     {...register('authorship')}
                     className="block rounded p-1 w-full border-gray-400 border shadow-sm"
-                    defaultValue={authorship || (ownQuestion ? "UNIFESO" : "")}
                     readOnly={!!ownQuestion}
                   />
                 </div>
@@ -106,7 +104,6 @@ export const FeaturesFormStep: FC = () => {
                   min="1999"
                   max={currentYear}
                   step="1"
-                  defaultValue={authorshipYear ?? new Date().getFullYear().toString()}
                   readOnly={!!ownQuestion}
                 />
               </div>
