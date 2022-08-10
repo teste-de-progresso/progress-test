@@ -7,6 +7,7 @@ pt-BR:
     attributes:
       user:
         name: Nome
+        roles: Perfis
 
   enumerize:
     user:
