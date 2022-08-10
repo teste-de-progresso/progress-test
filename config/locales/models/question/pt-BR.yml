@@ -46,7 +46,7 @@ pt-BR:
         evaluate: Avaliar
         create: Criar
       status:
-        draft: Rascunhos
+        draft: Rascunho
         waiting_review: Aguardando Revisão
         with_requested_changes: Com Alterações Solicitadas
         approved: Aprovada
