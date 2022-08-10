@@ -59,8 +59,13 @@ export const Form: FC<Props> = ({question, onSubmit, onDraftSubmit, alert}) => {
   const [leaveDialogIsOpen, setLeaveDialogIsOpen] = useState(false)
   const formHooks = useForm<FieldValues>({
     defaultValues: {
-      authorship: 'UNIFESO',
+      authorship: question?.authorship ?? 'UNIFESO',
+      authorshipType: question?.authorship === 'UNIFESO' ? 'UNIFESO' : 'OTHER',
       authorshipYear: new Date().getFullYear().toString(),
+      difficulty: question?.difficulty,
+      checkType: question?.checkType,
+      bloomTaxonomy: question?.bloomTaxonomy,
+      intention: question?.intention,
     }
   })
   const {register, control, setValue, getValues, reset, formState, resetField} = formHooks
