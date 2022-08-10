@@ -59,23 +59,25 @@ export const QuestionsList: FC<Props> = ({ questions, title, pagination }) => {
     <div className="bg-gray-200 p-4 rounded my-2">
       <div className="flex">
         <h2 className="text-gray-500 font-medium text-xl">{title}</h2>
-        <div className="ml-auto text-sm sm:text-base text-gray-700">
-          <button
-            className="p-2"
-            onClick={handleOnPreviousPageClick}
-            style={{ visibility: (pagination?.hasPreviousPage ? 'visible' : 'hidden') }}
-          >
-            <FaArrowLeft />
-          </button>
-          Página: {pageCount}
-          <button
-            className="p-2"
-            onClick={handleOnNextPageClick}
-            style={{ visibility: (pagination?.hasNextPage ? 'visible' : 'hidden') }}
-          >
-            <FaArrowRight />
-          </button>
-        </div>
+        {questions.length > 0 &&
+          <div className="ml-auto text-sm sm:text-base text-gray-700">
+            <button
+              className="p-2"
+              onClick={handleOnPreviousPageClick}
+              style={{ visibility: (pagination?.hasPreviousPage ? 'visible' : 'hidden') }}
+            >
+              <FaArrowLeft />
+            </button>
+            Página: {pageCount}
+            <button
+              className="p-2"
+              onClick={handleOnNextPageClick}
+              style={{ visibility: (pagination?.hasNextPage ? 'visible' : 'hidden') }}
+            >
+              <FaArrowRight />
+            </button>
+          </div>
+        }
       </div>
       <hr className="border-t border-gray-400 m-px" />
       <div className="p-2 text-sm">
