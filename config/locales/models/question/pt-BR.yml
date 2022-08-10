@@ -47,7 +47,7 @@ pt-BR:
         create: Criar
       status:
         draft: Rascunho
-        waiting_review: Aguardando Revisão
-        with_requested_changes: Com Alterações Solicitadas
+        waiting_review: Aguardando Parecer
+        with_requested_changes: Pendente de Alterações
         approved: Aprovada
         registered: Registrada
