@@ -7,3 +7,5 @@ pt-BR:
     attributes:
       axis:
         name: Nome
+        subjects: Assuntos
+

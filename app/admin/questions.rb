@@ -4,6 +4,18 @@ ActiveAdmin.register Question do
   scope :all, default: true
   scope :trashed
 
+  filter :user
+  filter :subject
+  filter :authorship
+  filter :authorship_year
+  filter :created_at
+  filter :updated_at
+  filter :deleted_at
+  filter :status, as: :check_boxes, collection: proc { Question.status.options }
+  filter :difficulty, as: :check_boxes, collection: proc { Question.difficulty.options }
+  filter :bloom_taxonomy, as: :check_boxes, collection: proc { Question.bloom_taxonomy.options }
+  filter :check_type, as: :check_boxes, collection: proc { Question.check_type.options }
+
   controller do
     def show
       @question = Question.unscoped.find_by!(permitted_params[:question])
@@ -30,10 +42,18 @@ ActiveAdmin.register Question do
     id_column
     column :user
     column :subject
-    column :bloom_taxonomy
-    column :check_type
-    column :difficulty
-    column :status
+    column :bloom_taxonomy do |question|
+      question.bloom_taxonomy_text
+    end
+    column :check_type do |question|
+      question.check_type_text
+    end
+    column :difficulty do |question|
+      question.difficulty_text
+    end
+    column :status do |question|
+      question.status_text
+    end
     column :created_at
     column :updated_at
     actions

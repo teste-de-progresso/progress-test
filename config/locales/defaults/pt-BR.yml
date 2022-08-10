@@ -2,3 +2,4 @@ pt-BR:
   attributes:
     created_at: Criado em
     updated_at: Atualizado em
+    deleted_at: Deletado em
