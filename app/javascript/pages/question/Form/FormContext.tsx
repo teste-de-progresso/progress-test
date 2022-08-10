@@ -1,15 +1,9 @@
-import React, { FC, useContext } from 'react'
-import { Control, FieldValues } from 'react-hook-form';
+import React, { FC, useContext } from 'react';
+import { FieldValues, UseFormReturn } from 'react-hook-form';
 import { Question } from '../../../__generated__/graphql-schema';
 
-type FormContextHooks = {
-  register: any
-  setValue: Function
-  control: Control<FieldValues>
-}
-
 type FormContextProps = {
-  hooks: FormContextHooks
+  hooks: UseFormReturn<FieldValues, object>
   question?: Question
 }
 

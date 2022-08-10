@@ -12,4 +12,5 @@ export const formatInput = (inputs: any) =>
       inputs.reviewerUserId === "" ? undefined : inputs.reviewerUserId,
     alternatives: inputs.alternatives,
     __nonused: undefined,
+    authorshipType: undefined,
   } as Question);

@@ -8,8 +8,7 @@ module Resolvers
     def resolve
       UserPolicy::Scope.new(@context[:current_user], User)
         .resolve
-        .joins(:roles)
-        .where(roles: { name: %i[teacher nde] })
+        .where(roles: %i[teacher nde])
         .where.not(id: @context[:current_user].id)
         .distinct
     end
