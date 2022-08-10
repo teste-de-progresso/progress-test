@@ -34,6 +34,20 @@ ActiveAdmin.register User do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :email
+      row :roles do |user|
+        user.roles.map { |role| role.text }.join(', ')
+      end
+      row :created_at
+      row :updated_at
+      row :deleted_at
+    end
+    active_admin_comments
+  end
+
   filter :email
   filter :name
   filter :created_at
