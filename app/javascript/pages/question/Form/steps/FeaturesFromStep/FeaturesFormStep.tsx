@@ -9,7 +9,7 @@ import { SubjectFragment, SubjectSelect } from "./SubjectSelect";
 import {
   BLOOM_TAXONOMY,
   CHECK_TYPE,
-  DIFFICULTY,
+  DIFFICULTY
 } from "../../../../../utils/types";
 
 export const FeaturesFragment = gql`
@@ -27,20 +27,20 @@ export const FeaturesFragment = gql`
   }
 `;
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export const FeaturesFormStep: FC = () => {
   const {
-    hooks: { setValue, register, getValues },
+    hooks: { setValue, register, watch },
   } = useFormProvider();
-  const currentYear = new Date().getFullYear();
-
-  const authorship = getValues("authorship");
+  const authorship = watch("authorship");
   const [ownQuestion, setOwnQuestion] = useState(authorship === "UNIFESO");
 
   const handleOwnCheck = (value: string) => {
     if (value === "UNIFESO") {
       setOwnQuestion(true);
       setValue("authorship", "UNIFESO");
-      setValue("authorshipYear", currentYear.toString());
+      setValue("authorshipYear", CURRENT_YEAR.toString());
     } else {
       setOwnQuestion(false);
       setValue("authorship", "");
@@ -59,6 +59,7 @@ export const FeaturesFormStep: FC = () => {
             <div className="my-auto">
               <input
                 {...register("authorshipType", { required: true })}
+                checked={authorship === "UNIFESO"}
                 value="UNIFESO"
                 className="my-auto"
                 type="radio"
@@ -104,7 +105,7 @@ export const FeaturesFormStep: FC = () => {
                   className="w-full rounded p-1 border-gray-400 border shadow-sm"
                   type="number"
                   min="1999"
-                  max={currentYear}
+                  max={CURRENT_YEAR}
                   step="1"
                   readOnly={!!ownQuestion}
                 />
