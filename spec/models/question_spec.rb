@@ -9,6 +9,7 @@
 #  bloom_taxonomy  :string
 #  body            :text
 #  check_type      :string
+#  deleted_at      :datetime
 #  difficulty      :string
 #  explanation     :text
 #  instruction     :text

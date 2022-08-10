@@ -1,0 +1,5 @@
+run(){
+  docker-compose run --rm $args rails $@
+}
+
+run bash
