@@ -42,7 +42,7 @@ export const AppbarTabs = () => {
   },
   {
     icon: <ClipboardListIcon className="w-6" />,
-    tabel: 'Edição',
+    tabel: 'Questões',
     pathname: QuestionRoutePaths.index,
     isCurrent: location.pathname.includes('question'),
   }]
