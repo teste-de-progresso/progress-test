@@ -84,7 +84,7 @@ export const ViewMode: FC<Props> = ({ questionData: question }) => {
           </div>
           <div>
             <span className="text-gray-700">Autoria: </span>
-            {question.authorship === "UNIFESO" ? "Própria" : `Terceiro - ${question.authorship}`}
+            {question.authorship}
           </div>
           <div>
             <span className="text-gray-700">Atualizada em: </span>
