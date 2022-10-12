@@ -1,4 +1,4 @@
-import { ChartBarIcon, ClipboardListIcon } from "@heroicons/react/outline";
+import { ChartBarIcon, ClipboardListIcon, DocumentIcon } from "@heroicons/react/outline";
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from 'react-router';
@@ -45,7 +45,14 @@ export const AppbarTabs = () => {
     tabel: 'Questões',
     pathname: QuestionRoutePaths.index,
     isCurrent: location.pathname.includes('question'),
-  }]
+  },
+  {
+    icon: <DocumentIcon className="w-6" />,
+    tabel: 'Avaliações',
+    pathname: QuestionRoutePaths.index,
+    isCurrent: false,
+  }
+]
 
   return (
     <>
