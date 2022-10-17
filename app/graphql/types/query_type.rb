@@ -8,6 +8,7 @@ module Types
     end
     field :subjects, SubjectType.connection_type, null: false
     field :reviewers, UserType.connection_type, null: false
+    field :question_filter_options, QuestionFilterOptionsType, null: false
     field :current_user, Types::UserType, null: true
 
     def questions(where: nil)
@@ -20,6 +21,11 @@ module Types
 
     def reviewers
       Resolvers::ReviewersQueryResolver.new(context).resolve
+    end
+
+
+    def question_filter_options
+      Resolvers::QuestionFilterOptionsQueryResolver.new.resolve
     end
 
     def current_user

@@ -223,6 +223,7 @@ type Query {
     """
     ids: [ID!]!
   ): [Node]!
+  questionFilterOptions: QuestionFilterOptions!
   questions(
     """
     Returns the elements in the list that come after the specified cursor.
@@ -422,6 +423,10 @@ type QuestionEdge {
   The item at the end of the edge.
   """
   node: Question
+}
+
+type QuestionFilterOptions {
+  years: [String!]!
 }
 
 enum QuestionStatus {

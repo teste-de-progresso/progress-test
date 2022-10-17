@@ -163,6 +163,7 @@ export type Query = {
   node?: Maybe<Node>;
   /** Fetches a list of objects given a list of IDs. */
   nodes: Array<Maybe<Node>>;
+  questionFilterOptions: QuestionFilterOptions;
   questions: QuestionConnection;
   reviewers: UserConnection;
   subjects: SubjectConnection;
@@ -311,6 +312,11 @@ export type QuestionEdge = {
   cursor: Scalars['String'];
   /** The item at the end of the edge. */
   node?: Maybe<Question>;
+};
+
+export type QuestionFilterOptions = {
+  __typename?: 'QuestionFilterOptions';
+  years: Array<Scalars['String']>;
 };
 
 export enum QuestionStatus {
