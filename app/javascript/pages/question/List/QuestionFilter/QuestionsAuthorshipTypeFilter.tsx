@@ -10,10 +10,12 @@ type Props = {
 
 const CURRENT_YEAR = new Date().getFullYear()
 
-const YEARS = range(1900, CURRENT_YEAR + 1).reverse()
+const YEARS = range(1900, CURRENT_YEAR + 1).reverse().map(toString)
 
 export const QuestionsAuthorshipTypeFilter: FC<Props> = ({ register, setChanged }) => {
-  const { where } = useFiltersProvider()
+  const { where, questionFilterOptions } = useFiltersProvider()
+
+  const yearOptions = questionFilterOptions?.years ?? YEARS
 
   return (
     <div>
@@ -24,7 +26,7 @@ export const QuestionsAuthorshipTypeFilter: FC<Props> = ({ register, setChanged 
         onClick={() => setChanged(true)}
       >
         <option value="" />
-        {YEARS.map((year) => (
+        {yearOptions.map((year) => (
           <option
             key={`questionYear-${year}`}
             value={year}

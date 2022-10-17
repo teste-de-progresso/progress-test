@@ -2,17 +2,17 @@ import React, {
   createContext,
   useState,
   useMemo,
-  FC,
   useContext,
   Dispatch,
   SetStateAction,
 } from 'react'
 
-import { QuestionWhereInput } from '../../../../__generated__/graphql-schema'
+import { Query, QuestionWhereInput } from '../../../../__generated__/graphql-schema'
 
 type ProviderValue = {
   where: QuestionWhereInput
   setWhere: Dispatch<SetStateAction<QuestionWhereInput>>
+  questionFilterOptions?: Query['questionFilterOptions']
 }
 
 const FiltersContext = createContext<ProviderValue | null>(null)
@@ -27,12 +27,18 @@ export const useFiltersProvider = () => {
   return context
 }
 
-export const FiltersProvider: FC = ({ children }) => {
+type FiltersProviderProps = {
+  children: React.ReactNode
+  questionFilterOptions?: Query['questionFilterOptions']
+}
+
+export const FiltersProvider = ({ children, questionFilterOptions }: FiltersProviderProps) => {
   const [where, setWhere] = useState<QuestionWhereInput>({})
 
-  const providerValue = useMemo(() => ({ where, setWhere }), [
+  const providerValue = useMemo(() => ({ where, setWhere, questionFilterOptions }), [
     where,
     setWhere,
+    questionFilterOptions,
   ])
 
   return (

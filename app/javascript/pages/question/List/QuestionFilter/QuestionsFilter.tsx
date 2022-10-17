@@ -93,20 +93,22 @@ export const QuestionsFilter: FC<Props> = ({ isOpen, setIsOpen }) => {
       return obj;
     };
 
-    setWhere({
-      unifesoAuthorship: inputs.authorship === 'null' ? null : inputs.authorship === 'true',
-      ...removeKeysWithUndefiend({
-        checkType: valuesFromCheckType.length ? valuesFromCheckType : undefined,
-        bloomTaxonomy: valuesFromBloomTaxonomy.length
-          ? valuesFromBloomTaxonomy
-          : undefined,
-        difficulty: valuesFromDifficulty.length
-          ? valuesFromDifficulty
-          : undefined,
-        subjectId: inputs.subjectId === "" ? undefined : inputs.subjectId,
-        authorshipYear: inputs.authorshipYear === "" ? undefined : [inputs.authorshipYear],
-      }),
-    });
+    const unifesoAuthorship: boolean | undefined = typeof inputs.authorship === 'undefined' ? undefined : (
+      inputs.authorship === 'true'
+    )
+
+    setWhere(removeKeysWithUndefiend({
+      unifesoAuthorship,
+      checkType: valuesFromCheckType.length ? valuesFromCheckType : undefined,
+      bloomTaxonomy: valuesFromBloomTaxonomy.length
+        ? valuesFromBloomTaxonomy
+        : undefined,
+      difficulty: valuesFromDifficulty.length
+        ? valuesFromDifficulty
+        : undefined,
+      subjectId: inputs.subjectId === "" ? undefined : inputs.subjectId,
+      authorshipYear: inputs.authorshipYear === "" ? undefined : [inputs.authorshipYear],
+    }));
 
     setChanged(false);
     setIsOpen(false);

@@ -1,16 +1,29 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { FaFilter } from "react-icons/fa";
 
 import { Navigator } from "../../../components";
 import { QuestionsFilter } from "./QuestionFilter";
 import { QuestionsPainel } from "./QuestionsPainel";
 import { FiltersProvider } from './QuestionFilter/QuestionsFilterProvider'
+import { gql, useQuery } from "@apollo/client";
+import { Query } from "../../../__generated__/graphql-schema";
+
+const QuestionListQuery = gql`
+  query DashboardQuery {
+    questionFilterOptions {
+      years
+    }
+  }
+`
 
 export const List = () => {
+  const { data } = useQuery<Query>(QuestionListQuery)
   const [filterOpen, setFilterOpen] = useState(false);
 
   return (
-    <FiltersProvider>
+    <FiltersProvider
+      questionFilterOptions={data?.questionFilterOptions}
+    >
       <Navigator newQuestion={true}>
         <li className={"hover:text-white ml-auto"}>
           <button onClick={() => setFilterOpen(true)} className="flex">
