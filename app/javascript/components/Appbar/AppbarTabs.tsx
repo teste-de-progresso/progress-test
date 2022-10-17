@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from 'react-router';
 
-import { DashboardRoutePaths, QuestionRoutePaths } from "../../routes";
+import { AssessmentRoutePaths, DashboardRoutePaths, QuestionRoutePaths } from "../../routes";
 import { RootState } from "../../services/store";
 import { turnOff } from "../../services/store/unsavedChanges";
 import { Dialog } from '../Dialog';
@@ -49,7 +49,7 @@ export const AppbarTabs = () => {
   {
     icon: <DocumentIcon className="w-6" />,
     tabel: 'Avaliações',
-    pathname: QuestionRoutePaths.index,
+    pathname: AssessmentRoutePaths.index,
     isCurrent: false,
   }
 ]

@@ -21,7 +21,7 @@ export const GET_QUESTION = gql`
     }
 `
 
-export const Review: FC = () => {
+export const Review = () => {
   const { id } = useParams<{ id: string }>()
   const { loading, data, refetch } = useQuery<Query>(GET_QUESTION, {
     variables: {

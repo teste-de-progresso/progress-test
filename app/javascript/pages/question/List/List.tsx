@@ -6,7 +6,7 @@ import { QuestionsFilter } from "./QuestionFilter";
 import { QuestionsPainel } from "./QuestionsPainel";
 import { FiltersProvider } from './QuestionFilter/QuestionsFilterProvider'
 
-export const List: FC = () => {
+export const List = () => {
   const [filterOpen, setFilterOpen] = useState(false);
 
   return (

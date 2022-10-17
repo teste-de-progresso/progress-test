@@ -32,7 +32,7 @@ const UPDATE_QUESTION_MUTATOIN = gql`
     }
 `
 
-export const Edit: FC = () => {
+export const Edit = () => {
   const history = useHistory()
   const [alert, setAlert] = useState<AlertV2Props>()
   const params = useParams<{ id: string }>()

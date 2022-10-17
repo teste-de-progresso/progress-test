@@ -54,7 +54,7 @@ const DESTROY_QUESTION = gql`
     }
 `
 
-export const Show: FC = () => {
+export const Show = () => {
   const history = useHistory();
   const {id} = useParams<{ id: string }>();
   const [confirmRegister, setConfirmRegister] = useState(false)

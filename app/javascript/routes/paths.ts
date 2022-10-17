@@ -16,3 +16,8 @@ export const SessionRoutePaths = {
 export const DashboardRoutePaths = {
   index: "/dashboard",
 };
+
+
+export const AssessmentRoutePaths = {
+  index: "/assessments",
+}
