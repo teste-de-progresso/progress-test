@@ -13,8 +13,8 @@ type Props = {
 export const Pie: FC<Props> = ({title, data}) => {
   return (
     <div
-      className="m-auto bg-white rounded-md p-4 shadow-sm hover:shadow transition-shadow duration-300"
-      style={{ height: '36rem', width: '36rem' }}
+      className="m-auto bg-white rounded-md p-4 shadow-sm hover:shadow transition-shadow duration-300 w-full"
+      style={{ height: '36rem' }}
     >
       <h3 className="text-lg leading-6 font-medium text-gray-900">{title}</h3>
       {data.length ? (
