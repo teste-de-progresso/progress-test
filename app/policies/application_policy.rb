@@ -10,7 +10,7 @@ class ApplicationPolicy
   end
 
   def is?(role)
-    @roles.any?(role)
+    @roles.any?(role.to_s)
   end
 
   def index?

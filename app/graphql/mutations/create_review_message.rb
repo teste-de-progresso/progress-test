@@ -10,15 +10,15 @@ module Mutations
       message = message.to_h
 
       ActiveRecord::Base.transaction do
-        record = ReviewMessage.create!({
+        review_message = ReviewMessage.create!({
           **message,
           user_id: current_user.id,
         })
 
-        update_question_status(record.question, message[:feedback_type])
-        update_review_requests(record.question, message[:feedback_type])
+        update_question_status(review_message.question, message[:feedback_type])
+        update_review_requests(review_message.question, message[:feedback_type])
 
-        { review_message: record, errors: [] }
+        { review_message: review_message, errors: [] }
       rescue ActiveRecord::RecordInvalid => e
         { review_message: nil, errors: e.record.errors.full_messages }
       end
