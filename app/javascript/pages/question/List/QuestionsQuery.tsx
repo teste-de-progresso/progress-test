@@ -30,7 +30,6 @@ type Props = {
 
 export const QuestionsQuery: FC<Props> = ({ title, where, status }) => {
   const { user } = useCurrentUser()
-
   const [questions, setQuestions] = useState<Question[]>([])
   const [pageInfo, setPageInfo] = useState<PageInfo | undefined>()
 
@@ -79,8 +78,6 @@ export const QuestionsQuery: FC<Props> = ({ title, where, status }) => {
       updateQuestions(data)
     })
   }
-
-  console.log(pageInfo)
 
   return (
     <QuestionsList

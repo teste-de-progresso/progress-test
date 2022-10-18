@@ -1,1 +1,1 @@
-export * from './Assessment'
+export * from './AssessmentList'

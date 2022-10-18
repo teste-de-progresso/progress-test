@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { Profile } from "../pages/session";
 import { Dashboard } from '../pages/dashboard'
 import { List, New, Show, Review, Edit } from "../pages/question";
-import { Assessment } from "../pages/assessment";
+import { AssessmentList } from "../pages/assessment";
 
 import { QuestionRoutePaths, SessionRoutePaths, DashboardRoutePaths, AssessmentRoutePaths } from './paths'
 
@@ -20,6 +20,6 @@ export const PrivateRoutes = () => (
     <Route exact path={QuestionRoutePaths.show} component={Show} />
     <Route exact path={QuestionRoutePaths.edit} component={Edit} />
     <Route exact path={QuestionRoutePaths.review} component={Review} />
-    <Route exact path={AssessmentRoutePaths.index} component={Assessment} />
+    <Route exact path={AssessmentRoutePaths.index} component={AssessmentList} />
   </Switch>
 );
