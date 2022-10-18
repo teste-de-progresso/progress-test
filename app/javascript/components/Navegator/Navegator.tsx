@@ -1,13 +1,13 @@
 import React, { FC, useState } from "react";
+import { FaHome, FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { FaHome, FaPlus } from "react-icons/fa";
 import styled from "styled-components";
 
-import { turnOff } from "../../services/store/unsavedChanges";
+import { QuestionRoutePaths } from "../../routes";
 import { RootState } from "../../services/store";
+import { turnOff } from "../../services/store/unsavedChanges";
 import { Dialog } from "../Dialog";
-import {QuestionRoutePaths} from "../../routes";
 
 const HorizontalMenu = styled.ul`
   margin: 0;
@@ -44,11 +44,12 @@ const Item: FC<ItemProps> = ({ children, className }) => (
 type Props = {
   home?: boolean
   newQuestion?: boolean
+  newAssessment?: boolean
   children?: any
 }
 
 export const Navigator: FC<Props> = ({
-  home = false, newQuestion = false, children,
+  home = false, newQuestion = false, newAssessment = false, children,
 }) => {
   const [confirmLeaveDialog, setConfirmLeaveDialog] = useState(false);
   const unsavedChanges = useSelector((state: RootState) => state.unsavedChanges)
@@ -94,6 +95,16 @@ export const Navigator: FC<Props> = ({
                 <Link to="/questions/new" className="flex">
                   <FaPlus className="my-auto" />
                   <span className="pl-3">Nova Questão</span>
+                </Link>
+              </Item>
+            ) : null
+          }
+          {
+            (newAssessment) ? (
+              <Item>
+                <Link to="/assessments/new" className="flex">
+                  <FaPlus className="my-auto" />
+                  <span className="pl-3">Nova Avaliação</span>
                 </Link>
               </Item>
             ) : null
