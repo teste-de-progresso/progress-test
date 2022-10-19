@@ -6,11 +6,11 @@ module Resolvers
     end
 
     def resolve
-      UserPolicy::Scope.new(@context[:current_user], User)
-        .resolve
-        .where(roles: %i[teacher nde])
+      scope = UserPolicy::Scope.new(@context[:current_user], User).resolve
         .where.not(id: @context[:current_user].id)
         .distinct
+
+      scope.filter { |u| u.roles.any?('teacher') || u.roles.any?('nde') }
     end
   end
 end

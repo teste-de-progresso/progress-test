@@ -6,11 +6,11 @@ ActiveAdmin.register User do
 
   controller do
     def show
-      @user = User.unscoped.find_by!(permitted_params[:user])
+      @user = User.unscoped.find(permitted_params[:id])
     end
 
     def edit
-      @user = User.unscoped.find_by!(permitted_params[:user])
+      @user = User.unscoped.find(permitted_params[:id])
     end
 
     def destroy
