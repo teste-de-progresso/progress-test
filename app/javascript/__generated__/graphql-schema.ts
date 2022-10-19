@@ -402,6 +402,35 @@ export type ReviewMessageInput = {
   text: Scalars['String'];
 };
 
+export type ReviewRequest = {
+  __typename?: 'ReviewRequest';
+  answered: Scalars['Boolean'];
+  id: Scalars['ID'];
+  question: Question;
+  user: User;
+};
+
+/** The connection type for ReviewRequest. */
+export type ReviewRequestConnection = {
+  __typename?: 'ReviewRequestConnection';
+  /** A list of edges. */
+  edges: Array<ReviewRequestEdge>;
+  /** A list of nodes. */
+  nodes: Array<ReviewRequest>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type ReviewRequestEdge = {
+  __typename?: 'ReviewRequestEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<ReviewRequest>;
+};
+
 export type Subject = {
   __typename?: 'Subject';
   axis: Axis;
@@ -460,11 +489,29 @@ export type UpdateQuestionPayload = {
 
 export type User = {
   __typename?: 'User';
+  activeReviewRequests: ReviewRequestConnection;
   avatarUrl?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   id: Scalars['ID'];
+  inactiveReviewRequests: ReviewRequestConnection;
   name: Scalars['String'];
   roles: Array<UserRole>;
+};
+
+
+export type UserActiveReviewRequestsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type UserInactiveReviewRequestsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for User. */

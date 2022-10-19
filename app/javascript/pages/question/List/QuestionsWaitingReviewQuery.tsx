@@ -34,8 +34,9 @@ export const QuestionsWaitingReviewQuery: FC<Props> = ({ title }) => {
   const [pageInfo, setPageInfo] = useState<PageInfo | undefined>()
 
   const updateQuestions = (queryResult: Query) => {
-    const { currentUser } = queryResult
-    const { activeReviewRequests } = currentUser as User
+    if (!queryResult.currentUser) return
+
+    const { activeReviewRequests } = queryResult.currentUser
     const reviewRequests = activeReviewRequests.nodes as ReviewRequest[]
 
     setQuestions(reviewRequests.map(item => item.question))

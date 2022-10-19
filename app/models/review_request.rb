@@ -22,4 +22,7 @@
 class ReviewRequest < ApplicationRecord
   belongs_to :question
   belongs_to :user
+
+  scope :active, -> { where(answered: false) }
+  scope :inactive, -> { where(answered: true) }
 end

@@ -24,6 +24,8 @@ class User < ApplicationRecord
   include Trashable
   extend Enumerize
 
+  has_many :review_requests, dependent: :destroy
+
   devise :database_authenticatable,
          :recoverable,
          :rememberable,
