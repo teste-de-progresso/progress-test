@@ -18,11 +18,11 @@ ActiveAdmin.register Question do
 
   controller do
     def show
-      @question = Question.unscoped.find_by!(permitted_params[:id])
+      @question = Question.unscoped.find(permitted_params[:id])
     end
 
     def edit
-      @question = Question.unscoped.find_by!(permitted_params[:id])
+      @question = Question.unscoped.find(permitted_params[:id])
     end
 
     def destroy
