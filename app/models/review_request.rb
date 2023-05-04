@@ -23,6 +23,7 @@ class ReviewRequest < ApplicationRecord
   belongs_to :question
   belongs_to :user
 
-  scope :active, -> { where(answered: false) }
+  # answered should be a boolean, it's a string by mistake
+  scope :active, -> { where(answered: nil) }
   scope :inactive, -> { where(answered: true) }
 end
