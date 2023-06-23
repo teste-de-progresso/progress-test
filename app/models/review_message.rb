@@ -26,6 +26,7 @@ class ReviewMessage < ApplicationRecord
   belongs_to :question
   belongs_to :user
 
+  alias_attribute :text, :content
   enumerize :feedback_type, in: %i[request_changes approve answer]
 
   validates :content, presence: true
