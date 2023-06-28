@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { FaArrowLeft, FaArrowRight, FaAngleDown, FaAngleRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { MdModeEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -62,7 +62,7 @@ export const QuestionsList: FC<Props> = ({ questions, title, pagination }) => {
         <h2 className="text-gray-500 font-medium text-xl">{title}</h2>
         <div className="flex items-center px-3 text-gray-600">
           <button onClick={() => setCollapsed(!collapsed)}>
-           {collapsed ? <FaAngleRight/> : <FaAngleDown/>}
+           {collapsed ? <FaAngleDown/> : <FaAngleUp/>}
           </button>
         </div>
         {questions.length > 0 &&
