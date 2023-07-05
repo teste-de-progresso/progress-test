@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { MdModeEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -39,6 +39,7 @@ export const QuestionsListFragments = gql`
 export const QuestionsList: FC<Props> = ({ questions, title, pagination }) => {
   const { user } = useCurrentUser()
   const [pageCount, setPageCount] = useState(1)
+  const [collapsed, setCollapsed] = useState(false)
 
   const formatDate = (stringDate: string) => new Date(stringDate).toLocaleDateString()
 
@@ -59,6 +60,11 @@ export const QuestionsList: FC<Props> = ({ questions, title, pagination }) => {
     <div className="bg-gray-200 p-4 rounded my-2">
       <div className="flex">
         <h2 className="text-gray-500 font-medium text-xl">{title}</h2>
+        <div className="flex items-center px-3 text-gray-600">
+          <button onClick={() => setCollapsed(!collapsed)}>
+           {collapsed ? <FaAngleDown/> : <FaAngleUp/>}
+          </button>
+        </div>
         {questions.length > 0 &&
           <div className="ml-auto text-sm sm:text-base text-gray-700">
             <button
@@ -80,7 +86,7 @@ export const QuestionsList: FC<Props> = ({ questions, title, pagination }) => {
         }
       </div>
       <hr className="border-t border-gray-400 m-px" />
-      <div className="p-2 text-sm">
+      {!collapsed && <div className="p-2 text-sm">
         {questions.length
           ? <div className="flex-col w-full sm:grid gap-4 sm:col-gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {questions.map((question) => (
@@ -127,7 +133,7 @@ export const QuestionsList: FC<Props> = ({ questions, title, pagination }) => {
             </div>
           </div>
         }
-      </div>
+      </div>}
     </div>
   )
 }
