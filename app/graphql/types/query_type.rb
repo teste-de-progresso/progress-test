@@ -6,6 +6,7 @@ module Types
     field :questions, QuestionType.connection_type, null: false do
       argument :where, Inputs::QuestionWhereInput, required: false
     end
+    field :axes, AxisType.connection_type, null: false
     field :subjects, SubjectType.connection_type, null: false
     field :categories, CategoryType.connection_type, null: false
     field :reviewers, UserType.connection_type, null: false
@@ -14,6 +15,10 @@ module Types
 
     def questions(where: nil)
       Resolvers::QuestionsQueryResolver.new(Question, context: context, where: where).resolve
+    end
+
+    def axes
+      Resolvers::AxesQueryResolver.new(context).resolve
     end
 
     def subjects

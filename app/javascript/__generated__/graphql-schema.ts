@@ -25,6 +25,27 @@ export type Axis = {
   subjects: Array<Subject>;
 };
 
+/** The connection type for Axis. */
+export type AxisConnection = {
+  __typename?: 'AxisConnection';
+  /** A list of edges. */
+  edges: Array<AxisEdge>;
+  /** A list of nodes. */
+  nodes: Array<Axis>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+/** An edge in a connection. */
+export type AxisEdge = {
+  __typename?: 'AxisEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node?: Maybe<Axis>;
+};
+
 export type Category = {
   __typename?: 'Category';
   id: Scalars['ID']['output'];
@@ -181,6 +202,7 @@ export type PageInfo = {
 
 export type Query = {
   __typename?: 'Query';
+  axes: AxisConnection;
   categories: CategoryConnection;
   currentUser?: Maybe<User>;
   /** Fetches an object given its ID. */
@@ -191,6 +213,14 @@ export type Query = {
   questions: QuestionConnection;
   reviewers: UserConnection;
   subjects: SubjectConnection;
+};
+
+
+export type QueryAxesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
