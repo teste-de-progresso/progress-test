@@ -3,6 +3,7 @@ import { FaArrowLeft, FaArrowRight, FaAngleDown, FaAngleUp } from 'react-icons/f
 import { MdModeEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useLocalStorage } from 'usehooks-ts';
 
 import { Question, QuestionStatus } from '../../../__generated__/graphql-schema'
 import { useCurrentUser } from '../../../contexts';
@@ -39,7 +40,7 @@ export const QuestionsListFragments = gql`
 export const QuestionsList: FC<Props> = ({ questions, title, pagination }) => {
   const { user } = useCurrentUser()
   const [pageCount, setPageCount] = useState(1)
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useLocalStorage<boolean>('collapsed', false)
 
   const formatDate = (stringDate: string) => new Date(stringDate).toLocaleDateString()
 

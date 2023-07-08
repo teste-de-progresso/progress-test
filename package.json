@@ -38,6 +38,7 @@
     "postcss": "^7.0.32",
     "postcss-cli": "^7.1.1",
     "postcss-import": "^12.0.1",
-    "tailwindcss": "^1.5.1"
+    "tailwindcss": "^1.5.1",
+    "usehooks-ts": "2.6.0"
   }
 }
