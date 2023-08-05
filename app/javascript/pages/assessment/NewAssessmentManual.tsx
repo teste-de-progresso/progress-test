@@ -5,6 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 
 import { Axis, Query } from "../../__generated__/graphql-schema";
 import { Button, Card, Input, Navigator } from '../../components';
+import { SideBar } from "./components/SideBar";
 
 type NewAssessementManualForm = {
   axisWeights: Record<string, any>
@@ -48,9 +49,22 @@ export const NewAssessementManual = () => {
   const selectedAxis: Axis[] = axes.filter((axis) => subjectsIds.includes(axis.id))
 
   return (
-    <div></div>
+    <>
+        <Navigator home />
+        <div className="grid grid-cols-5 gap-4 mt-4 mx-6">
+            <SideBar border="r"> {/*bgColor="bg-red-700"*/}
+                Filters
+            </SideBar>
+            <div className="col-span-3"> {/*bg-blue-500*/}
+                Questions
+            </div>
+            <SideBar border="l"> {/*bgColor="bg-yellow-400"*/}
+                Selected Questions
+            </SideBar>
+        </div>
+    </>
     // <>
-    //   <Navigator home />
+    //   
     //   <div className="m-auto grid gap-4 mt-4 mx-6">
     //     <Card title="Detalhes">
     //       <div className="flex flex-col">
