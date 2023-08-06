@@ -6,6 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Axis, Query } from "../../__generated__/graphql-schema";
 import { Button, Card, Input, Navigator } from '../../components';
 import { SideBar } from "./components/SideBar";
+import { QuestionCard } from "./components/QuestionCard";
 
 type NewAssessementManualForm = {
   axisWeights: Record<string, any>
@@ -51,14 +52,20 @@ export const NewAssessementManual = () => {
   return (
     <>
         <Navigator home />
-        <div className="grid grid-cols-5 gap-4 mt-4 mx-6">
-            <SideBar border="r"> {/*bgColor="bg-red-700"*/}
+        <div className="grid grid-cols-5 gap-2 mt-4 mx-6">
+            <SideBar> {/*bgColor="bg-red-700"*/}
                 Filters
             </SideBar>
-            <div className="col-span-3"> {/*bg-blue-500*/}
-                Questions
+            <div className="col-span-3 border-l-2 border-r-2 border-gray-300 px-6 pb-20"> {/*bg-blue-500*/}
+                <QuestionCard title="Question 1"/>
+                <QuestionCard title="Question 2"/>
+                <QuestionCard title="Question 3"/>
+                <QuestionCard title="Question 4"/>
+                <QuestionCard title="Question 5"/>
+                <QuestionCard title="Question 6"/>
+                <QuestionCard title="Question 7"/>
             </div>
-            <SideBar border="l"> {/*bgColor="bg-yellow-400"*/}
+            <SideBar> {/*bgColor="bg-yellow-400"*/}
                 Selected Questions
             </SideBar>
         </div>
