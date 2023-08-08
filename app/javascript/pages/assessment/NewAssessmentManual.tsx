@@ -7,6 +7,9 @@ import { Axis, Query } from "../../__generated__/graphql-schema";
 import { Button, Card, Input, Navigator } from '../../components';
 import { SideBar } from "./components/SideBar";
 import { QuestionCard } from "./components/QuestionCard";
+import { Link } from "react-router-dom";
+import { SelectedQuestionCard } from "./components/SelectedQuestionCard";
+import { SelectedQuestionsSideBar } from "./components/SelectedQuestionsSideBar";
 
 type NewAssessementManualForm = {
   axisWeights: Record<string, any>
@@ -65,9 +68,12 @@ export const NewAssessementManual = () => {
                 <QuestionCard title="Question 6"/>
                 <QuestionCard title="Question 7"/>
             </div>
-            <SideBar> {/*bgColor="bg-yellow-400"*/}
-                Selected Questions
-            </SideBar>
+            <SelectedQuestionsSideBar>
+              <SelectedQuestionCard id="Question1" label="question 1"/>
+              <SelectedQuestionCard id="Question2" label="question 2"/>
+              <SelectedQuestionCard id="Question3" label="question 3"/>
+              <SelectedQuestionCard id="Question5" label="question 5"/>
+            </SelectedQuestionsSideBar>
         </div>
     </>
     // <>
