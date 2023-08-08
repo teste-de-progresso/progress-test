@@ -8,6 +8,8 @@ interface Props {
 }
 
 export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion }) => {
+    const [collapsed, setCollapsed] = useState(false)
+    
     const questionId = title.replace(/\s+/g, '')
     
     const handleAddQuestion = () => {
@@ -32,7 +34,7 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
         <div id={questionId}>
             <Card title={title} className="mb-5">
                 <div>
-                    <div className="grid grid-cols-2 gap-2">
+                    {!collapsed && <div className="grid grid-cols-2 gap-2">
                         <div>
                             <span className="text-gray-700">Grau de Dificuldade: </span>
                             <span>Media</span>
@@ -67,10 +69,13 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
                                 ijodsjidsoifidfsiojsdfiojdsfiodfs ijdf iodsf iosd iojdf sijodsf iojdsf ioj sdfiojdf sioj dfsiojsdf iojdfs ijodsfijoidfsijodfsijdfsijo dsiofd ijosdfjiofdsidsfio
                             </div>
                         </div>
-                    </div>
+                    </div>}
                     <div className="mt-6">
                         <hr className="h-4"/>
-                        <div className="flex justify-end">
+                        <div className="flex justify-between w-full">
+                            <Button type="default" onClick={() => setCollapsed(!collapsed)}>
+                                {collapsed ? 'Mostrar Mais' : 'Mostrar Menos'}
+                            </Button>
                             <Button type="primary" className={buttonState.bg}
                                 onClick={buttonState.method}>
                                 {buttonState.label}
