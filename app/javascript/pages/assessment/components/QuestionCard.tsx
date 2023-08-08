@@ -1,13 +1,35 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Button, Card } from "../../../components";
 
 interface Props {
     title: string
+    onAddQuestion: Function,
+    onRemoveQuestion: Function
 }
 
-export const QuestionCard: FC<Props> = ({ title }) => {
+export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion }) => {
+    const questionId = title.replace(/\s+/g, '')
+    
+    const handleAddQuestion = () => {
+        setButtonState({
+            bg: 'bg-red-700', label: 'Remover', method: handleRemoveQuestion
+        })
+        onAddQuestion(title)
+    }
+    
+    const handleRemoveQuestion = () => {
+        setButtonState({
+            bg: '', label: 'Adicionar', method: handleAddQuestion
+        })
+        onRemoveQuestion(questionId)
+    }
+
+    const [buttonState, setButtonState] = useState({
+        bg: '', label: 'Adicionar', method: handleAddQuestion
+    })
+
     return (
-        <div id={title.replace(/\s+/g, '')}>
+        <div id={questionId}>
             <Card title={title} className="mb-5">
                 <div>
                     <div className="grid grid-cols-2 gap-2">
@@ -49,8 +71,9 @@ export const QuestionCard: FC<Props> = ({ title }) => {
                     <div className="mt-6">
                         <hr className="h-4"/>
                         <div className="flex justify-end">
-                            <Button type="primary">
-                                Adicionar
+                            <Button type="primary" className={buttonState.bg}
+                                onClick={buttonState.method}>
+                                {buttonState.label}
                             </Button>
                         </div>
                     </div>
