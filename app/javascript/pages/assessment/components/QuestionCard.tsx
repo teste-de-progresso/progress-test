@@ -16,7 +16,7 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
         setButtonState({
             bg: 'bg-red-700', label: 'Remover', method: handleRemoveQuestion
         })
-        onAddQuestion(title)
+        onAddQuestion(title, handleRemoveQuestion)
     }
     
     const handleRemoveQuestion = () => {

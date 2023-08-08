@@ -28,7 +28,7 @@ export const NewAssessementManual = () => {
   const { data } = useQuery<Query>(NEW_ASSESSEMENT_DATA_QUERY)
   const axes = data?.axes.nodes
 
-  const [questions, setQuestions] = useState<{id: string, label: string}[]>([])
+  const [questions, setQuestions] = useState<{id: string, label: string, removeHandler: Function}[]>([])
 
   const [subjectsIds, setSubjectsIds] = useState<string[]>([])
   const { register, control, watch } = useForm<NewAssessementManualForm>({
@@ -52,13 +52,15 @@ export const NewAssessementManual = () => {
   const notSelectedAxis: Axis[] = axes.filter((axis) => !subjectsIds.includes(axis.id))
   const selectedAxis: Axis[] = axes.filter((axis) => subjectsIds.includes(axis.id))
 
-  const addQuestion = (label: string) => {
+  const addQuestion = (label: string, removeHandler: Function) => {
     const id: string = label.replace(/\s+/g, '')
-    setQuestions(q => [...q, { id, label }])
+    if (!questions.find(q => q.id === id)) {
+      setQuestions(q => [...q, { id, label, removeHandler }])
+    }
   }
 
   const removeQuestion = (id: string) => {
-    setQuestions(q => q.filter(i => i.id != id))
+    setQuestions(q => q.filter(i => i.id !== id))
   }
 
   return (
@@ -91,7 +93,7 @@ export const NewAssessementManual = () => {
                   onAddQuestion={addQuestion}
                   onRemoveQuestion={removeQuestion}/>
             </div>
-            <SelectedQuestionsSideBar onRemoveQuestion={removeQuestion} questions={questions}/>
+            <SelectedQuestionsSideBar questions={questions}/>
         </div>
     </>
   )

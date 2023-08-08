@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { FaTrash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 type Props = {
     label: string
@@ -18,7 +17,7 @@ export const SelectedQuestionCard: FC<Props> = ({ label, id, onRemoveQuestion })
             <div className="flex flex-col relative flex-grow justify-center">
                 <button className="group-hover:block absolute bg-gray-300 hover:bg-primary-normal text-gray-500 hover:text-gray-100 hover:shadow-lg rounded-full p-2 cursor-pointer shadow-inner transition-all duration-500"
                     style={{ left: '-1.5rem' }}
-                    onClick={() => onRemoveQuestion(id)}>
+                    onClick={() => onRemoveQuestion()}>
                     <FaTrash />
                 </button>
             </div>
