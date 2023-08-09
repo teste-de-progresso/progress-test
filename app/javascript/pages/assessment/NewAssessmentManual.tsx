@@ -8,6 +8,7 @@ import { SideBar } from "./components/SideBar";
 import { QuestionCard } from "./components/QuestionCard";
 import { Link } from "react-router-dom";
 import { SelectedQuestionsSideBar } from "./components/SelectedQuestionsSideBar";
+import { FiltersSideBar } from "./components/FiltersSideBar";
 
 type NewAssessementManualForm = {
   axisWeights: Record<string, any>
@@ -66,34 +67,32 @@ export const NewAssessementManual = () => {
   return (
     <>
         <Navigator home />
-        <div className="grid grid-cols-5 gap-2 mt-4 mx-6">
-            <SideBar> {/*bgColor="bg-red-700"*/}
-                Filters
-            </SideBar>
-            <div className="col-span-3 border-l-2 border-r-2 border-gray-300 px-6 pb-20"> {/*bg-blue-500*/}
-                <QuestionCard title="Question 1"
-                  onAddQuestion={addQuestion}
-                  onRemoveQuestion={removeQuestion}/>
-                <QuestionCard title="Question 2"
-                  onAddQuestion={addQuestion}
-                  onRemoveQuestion={removeQuestion}/>
-                <QuestionCard title="Question 3"
-                  onAddQuestion={addQuestion}
-                  onRemoveQuestion={removeQuestion}/>
-                <QuestionCard title="Question 4"
-                  onAddQuestion={addQuestion}
-                  onRemoveQuestion={removeQuestion}/>
-                <QuestionCard title="Question 5"
-                  onAddQuestion={addQuestion}
-                  onRemoveQuestion={removeQuestion}/>
-                <QuestionCard title="Question 6"
-                  onAddQuestion={addQuestion}
-                  onRemoveQuestion={removeQuestion}/>
-                <QuestionCard title="Question 7"
-                  onAddQuestion={addQuestion}
-                  onRemoveQuestion={removeQuestion}/>
-            </div>
-            <SelectedQuestionsSideBar questions={questions}/>
+        <div className="grid grid-cols-5 gap-4 mt-4 mx-4">
+          <FiltersSideBar/>
+          <div className="col-span-3 border-l-2 border-r-2 border-gray-300 px-6 pb-20"> {/*bg-blue-500*/}
+            <QuestionCard title="Question 1"
+              onAddQuestion={addQuestion}
+              onRemoveQuestion={removeQuestion}/>
+            <QuestionCard title="Question 2"
+              onAddQuestion={addQuestion}
+              onRemoveQuestion={removeQuestion}/>
+            <QuestionCard title="Question 3"
+              onAddQuestion={addQuestion}
+              onRemoveQuestion={removeQuestion}/>
+            <QuestionCard title="Question 4"
+              onAddQuestion={addQuestion}
+              onRemoveQuestion={removeQuestion}/>
+            <QuestionCard title="Question 5"
+              onAddQuestion={addQuestion}
+              onRemoveQuestion={removeQuestion}/>
+            <QuestionCard title="Question 6"
+              onAddQuestion={addQuestion}
+              onRemoveQuestion={removeQuestion}/>
+            <QuestionCard title="Question 7"
+              onAddQuestion={addQuestion}
+              onRemoveQuestion={removeQuestion}/>
+          </div>
+          <SelectedQuestionsSideBar questions={questions}/>
         </div>
     </>
   )

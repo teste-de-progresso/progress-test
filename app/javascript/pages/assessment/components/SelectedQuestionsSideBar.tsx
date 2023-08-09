@@ -10,9 +10,7 @@ type Props = {
 
 export const SelectedQuestionsSideBar: FC<Props> = ({ questions }) => {
     return (
-        <SideBar>
-            <h1>Questões Selecionadas</h1>
-            <hr className="h-1 mt-2"/>
+        <SideBar header="Questões Selecionadas">
             <div>
                 {questions.length ?
                     questions.map(q => <SelectedQuestionCard

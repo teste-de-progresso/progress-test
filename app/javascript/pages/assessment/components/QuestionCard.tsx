@@ -37,14 +37,14 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
                     {!collapsed && <div className="grid grid-cols-2 gap-2">
                         <div>
                             <span className="text-gray-700">Grau de Dificuldade: </span>
-                            <span>Media</span>
+                            <span>Média</span>
                         </div>
                         <div>
                             <span className="text-gray-700">Categoria: </span>
                             <span>Modelagem</span>
                         </div>
                         <div>
-                            <span className="text-gray-700">Eixo de Formacao: </span>
+                            <span className="text-gray-700">Eixo de Formação: </span>
                             <span>Infra Sistemas</span>
                         </div>
                         <div>
@@ -52,16 +52,20 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
                             <span>Fisica</span>
                         </div>
                         <div>
-                            <span className="text-gray-700">Habilidade Cogn: </span>
+                            <span className="text-gray-700">Habilidade Cognitiva: </span>
                             <span>Compreender</span>
                         </div>
                         <div>
-                            <span className="text-gray-700">Ano: </span>
-                            <span>2023</span>
+                            <span className="text-gray-700">Tipo: </span>
+                            <span>Resposta Multipla</span>
                         </div>
                         <div>
                             <span className="text-gray-700">Autoria: </span>
                             <span>UNIFESO</span>
+                        </div>
+                        <div>
+                            <span className="text-gray-700">Ano: </span>
+                            <span>2023</span>
                         </div>
                         <div className="col-span-2">
                             <span className="text-gray-700">Enunciado:</span>
