@@ -9,6 +9,7 @@ import { QuestionCard } from "./components/QuestionCard";
 import { Link } from "react-router-dom";
 import { SelectedQuestionsSideBar } from "./components/SelectedQuestionsSideBar";
 import { FiltersSideBar } from "./components/FiltersSideBar";
+import { BottomBar } from "./components/BottomBar";
 
 type NewAssessementManualForm = {
   axisWeights: Record<string, any>
@@ -67,9 +68,10 @@ export const NewAssessementManual = () => {
   return (
     <>
         <Navigator home />
-        <div className="grid grid-cols-5 gap-4 mt-4 mx-4">
+        <BottomBar/>
+        <div className="grid grid-cols-5 gap-4 mt-4 mx-4 pb-20">
           <FiltersSideBar/>
-          <div className="col-span-3 border-l-2 border-r-2 border-gray-300 px-6 pb-20"> {/*bg-blue-500*/}
+          <div className="col-span-3 border-l-2 border-r-2 border-gray-300 px-6 pb-10">
             <QuestionCard title="Question 1"
               onAddQuestion={addQuestion}
               onRemoveQuestion={removeQuestion}/>

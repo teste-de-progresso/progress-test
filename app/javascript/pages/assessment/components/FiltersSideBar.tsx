@@ -15,9 +15,7 @@ export const FiltersSideBar: FC<Props> = () => {
     return (
         <SideBar header="Filtros">
             <div className="mt-3">
-                <form className="flex flex-col gap-4"
-                    // onSubmit={addAxisForm.handleSubmit(handleAddAxis)}
-                >
+                <form className="flex flex-col gap-4">
                     <SelectFilterField label="Grau de Dificuldade:" options={[
                         {id: 1, label: 'Fácil'},
                         {id: 2, label: 'Média'},
@@ -61,7 +59,6 @@ export const FiltersSideBar: FC<Props> = () => {
                             Limpar Filtro
                         </Button>
                     </div>                                         
-                    
                 </form>
             </div>
         </SideBar>
