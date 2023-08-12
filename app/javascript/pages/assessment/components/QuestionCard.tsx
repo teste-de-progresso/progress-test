@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import { Button, Card } from "../../../components";
+import { QuestionCardField } from "./QuestionCardField";
 
 interface Props {
     title: string
@@ -35,38 +36,14 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
             <Card title={title} className="mb-5">
                 <div>
                     {!collapsed && <div className="grid grid-cols-2 gap-2">
-                        <div>
-                            <span className="text-gray-700">Grau de Dificuldade: </span>
-                            <span>Média</span>
-                        </div>
-                        <div>
-                            <span className="text-gray-700">Categoria: </span>
-                            <span>Modelagem</span>
-                        </div>
-                        <div>
-                            <span className="text-gray-700">Eixo de Formação: </span>
-                            <span>Infra Sistemas</span>
-                        </div>
-                        <div>
-                            <span className="text-gray-700">Assunto: </span>
-                            <span>Fisica</span>
-                        </div>
-                        <div>
-                            <span className="text-gray-700">Habilidade Cognitiva: </span>
-                            <span>Compreender</span>
-                        </div>
-                        <div>
-                            <span className="text-gray-700">Tipo: </span>
-                            <span>Resposta Multipla</span>
-                        </div>
-                        <div>
-                            <span className="text-gray-700">Autoria: </span>
-                            <span>UNIFESO</span>
-                        </div>
-                        <div>
-                            <span className="text-gray-700">Ano: </span>
-                            <span>2023</span>
-                        </div>
+                        <QuestionCardField label="Grau de Dificuldade" value="Média"/>
+                        <QuestionCardField label="Categoria" value="Modelagem"/>
+                        <QuestionCardField label="Eixo de Formação" value="Infra Sistemas"/>
+                        <QuestionCardField label="Assunto" value="Fisica"/>
+                        <QuestionCardField label="Habilidade Cognitiva" value="Compreender"/>
+                        <QuestionCardField label="Tipo" value="Resposta Multipla"/>
+                        <QuestionCardField label="Autoria" value="UNIFESO" />
+                        <QuestionCardField label="Ano" value="2023"/>
                         <div className="col-span-2">
                             <span className="text-gray-700">Enunciado:</span>
                             <div>
