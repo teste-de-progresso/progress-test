@@ -41,17 +41,13 @@ const QUESTIONS_QUERY = gql`
 `
 
 export const NewAssessementManual = () => {
-  // const [questions, setQuestions] = useState([
-  //   "Question 1", "Question 2", "Question 3", "Question 4",
-  //   "Question 5", "Question 6", "Question 7"])
   const [questions, setQuestions] = useState<Question[]>([])
   const [selectedQuestions, setSelectedQuestions] = useState<{id: string, label: string, removeHandler: Function}[]>([]) 
 
-  const { fetchMore } = useQuery<Query>(QUESTIONS_QUERY, {
-    onCompleted: (respose) => {
-      const { questions: questionConnection } = respose
+  useQuery<Query>(QUESTIONS_QUERY, {
+    onCompleted: (response) => {
+      const { questions: questionConnection } = response
       setQuestions(questionConnection.nodes as Question[])
-      console.log(respose)
     },
     fetchPolicy: "network-only"
   })
@@ -70,8 +66,6 @@ export const NewAssessementManual = () => {
   const clearSelectedQuestions = () => {
     setSelectedQuestions([])
   }
-
-  fetchMore({})
 
   return (
     <>

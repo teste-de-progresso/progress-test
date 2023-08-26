@@ -15,6 +15,7 @@ export const QuestionCard: FC<Props> = ({ question, onAddQuestion, onRemoveQuest
     const [collapsed, setCollapsed] = useState(false)
     
     const title = `Questão ${NodeId.decode(question.id).id}`
+    const htmlId = title.replace(/\s+/g, '_')
     const difficulty = DIFFICULTY.find(item => item.value === question.difficulty)?.label
     const bloomTaxonomy = BLOOM_TAXONOMY.find(item => item.value === question.bloomTaxonomy)?.label
     const checkType = CHECK_TYPE.find(item => item.value === question.checkType)?.label
@@ -30,7 +31,7 @@ export const QuestionCard: FC<Props> = ({ question, onAddQuestion, onRemoveQuest
         setButtonState({
             bg: '', label: 'Adicionar', method: handleAddQuestion
         })
-        onRemoveQuestion(question.id)
+        onRemoveQuestion(htmlId)
     }
 
     const [buttonState, setButtonState] = useState({
@@ -38,7 +39,7 @@ export const QuestionCard: FC<Props> = ({ question, onAddQuestion, onRemoveQuest
     })
 
     return (
-        <div id={title.replace(/\s+/g, '_')}>
+        <div id={htmlId}>
             <Card title={title} className="mb-5">
                 <div>
                     {!collapsed && <div className="grid grid-cols-2 gap-2">

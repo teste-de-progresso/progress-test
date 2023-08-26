@@ -1,7 +1,7 @@
 import React, { FC, } from "react";
 
 type Props = {
-    options: {id: number, label: string,}[]
+    options: {id: number | string, label: string,}[]
     label: string
 }
 

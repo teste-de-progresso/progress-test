@@ -1,55 +1,83 @@
-import React, { FC, } from "react";
+import React, { FC, useState, } from "react";
 import { SideBar } from "./SideBar";
-import { SelectedQuestionCard } from "./SelectedQuestionCard";
 import { Button } from "../../../components";
 import { SelectFilterField } from "./SelectFilterField";
 import { RangeFilterField } from "./RangeFilterField";
+import { BLOOM_TAXONOMY, CHECK_TYPE, DIFFICULTY } from "../../../utils/types";
+import { gql, useQuery } from "@apollo/client";
+import { Axis, Category, Query, Subject } from "../../../__generated__/graphql-schema";
+
+const FILTERS_QUERY = gql`
+  query {
+    categories {
+        nodes {
+            id
+            name
+        }
+    }
+    axes {
+        nodes {
+            id
+            name
+        }
+    }
+    subjects {
+        nodes {
+            id
+            name
+        }
+    }
+  }
+`
 
 type Props = {
-    questions?: {
-        id: string, label: string, removeHandler: Function
-    }[]
+
 }
 
 export const FiltersSideBar: FC<Props> = () => {
+    const [categories, setCategories] = useState<Category[]>([])
+    const [axis, setAxis] = useState<Axis[]>([])
+    const [subjects, setSubjects] = useState<Subject[]>([])
+
+    const difficulties = DIFFICULTY.map(item => ({id: item.value, label: item.label}))
+    const bloomTaxonomyTypes = BLOOM_TAXONOMY.map(item => ({id: item.value, label: item.label}))
+    const checkTypes = CHECK_TYPE.map(item => ({id: item.value, label: item.label}))
+    const authorshipTypes = [
+        {id: 1, label: 'Própria'},
+        {id: 2, label: 'Outro'},
+    ]
+
+    useQuery<Query>(FILTERS_QUERY, {
+        onCompleted: (response) => {
+            const {
+                categories: categoriesConnection,
+                axes: axisConnection,
+                subjects: subjectConnection
+            } = response
+            setCategories(categoriesConnection.nodes as Category[])
+            setAxis(axisConnection.nodes as Axis[])
+            setSubjects(subjectConnection.nodes as Subject[])
+        },
+        fetchPolicy: "network-only"
+      })
+
     return (
         <SideBar header="Filtros">
             <div className="mt-3">
                 <form className="flex flex-col gap-4">
-                    <SelectFilterField label="Grau de Dificuldade:" options={[
-                        {id: 1, label: 'Fácil'},
-                        {id: 2, label: 'Média'},
-                        {id: 3, label: 'Difícil'}
-                    ]}/>
-                    <SelectFilterField label="Categoria:" options={[
-                        {id: 1, label: 'Conhecimentos Básicos'},
-                        {id: 2, label: 'Redes e Sistemas Computacionais'},
-                        {id: 3, label: 'Modelagem e Simulacao'}
-                    ]}/>
-                    <SelectFilterField label="Eixo de Formação:" options={[
-                        {id: 1, label: 'Infraestrutura de Sistemas Computacionais'},
-                        {id: 2, label: 'Sistemas de Software'},
-                        {id: 3, label: 'Algoritmos de Alto Desempenho'}
-                    ]}/>
-                    <SelectFilterField label="Assunto:" options={[
-                        {id: 1, label: 'Cálculo'},
-                        {id: 2, label: 'Pesquisa Operacional'},
-                        {id: 3, label: 'Sistemas Digitais'}
-                    ]}/>
-                    <SelectFilterField label="Habilidade Cognitiva:" options={[
-                        {id: 1, label: 'Recordar'},
-                        {id: 2, label: 'Compreender'},
-                        {id: 3, label: 'Criar'}
-                    ]}/>
-                    <SelectFilterField label="Tipo:" options={[
-                        {id: 1, label: 'Resposta Multipla'},
-                        {id: 2, label: 'Lacuna'},
-                        {id: 3, label: 'Foco Negativo'}
-                    ]}/>
-                    <SelectFilterField label="Autoria:" options={[
-                        {id: 1, label: 'Própria'},
-                        {id: 2, label: 'Outro'},
-                    ]}/>
+                    <SelectFilterField label="Grau de Dificuldade:" options={difficulties}/>
+                    <SelectFilterField label="Categoria:" options={
+                            categories.map(item => ({id: item.id, label: item.name}))
+                        }/>
+                    <SelectFilterField label="Eixo de Formação:" options={
+                            axis.map(item => ({id: item.id, label: item.name}))   
+                        }/>
+                    <SelectFilterField label="Assunto:" options={
+                            subjects.map(item => ({id: item.id, label: item.name}))   
+                        }/>
+                    <SelectFilterField label="Habilidade Cognitiva:" options={bloomTaxonomyTypes}/>
+                    <SelectFilterField label="Tipo:" options={checkTypes}/>
+                    <SelectFilterField label="Autoria:" options={authorshipTypes}/>
                     <RangeFilterField label="Ano:"/>  
                     <div className="w-full flex flex-col mt-2 gap-3">
                         <Button type="primary" htmlType="submit">
