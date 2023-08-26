@@ -4,15 +4,60 @@ import { SelectedQuestionsSideBar } from "./components/SelectedQuestionsSideBar"
 import { FiltersSideBar } from "./components/FiltersSideBar";
 import { BottomBar } from "./components/BottomBar";
 import { QuestionArea } from "./components/QuestionArea";
+import { gql, useQuery } from "@apollo/client";
+import { Query, Question } from "../../__generated__/graphql-schema";
+
+const QuestionFragments = gql`
+  fragment QuestionFields on Question {
+    id
+    authorship
+    authorshipYear
+    bloomTaxonomy
+    body
+    checkType
+    difficulty
+    status
+    subject {
+      axis {
+        name
+      }
+      category {
+        name
+      }
+      name
+    }
+  }
+`
+
+const QUESTIONS_QUERY = gql`
+  ${QuestionFragments}
+  query {
+    questions {
+      nodes {
+        ...QuestionFields
+      }
+    }
+  }
+`
 
 export const NewAssessementManual = () => {
-  const [questions, setQuestions] = useState([
-    "Question 1", "Question 2", "Question 3", "Question 4",
-    "Question 5", "Question 6", "Question 7"])
+  // const [questions, setQuestions] = useState([
+  //   "Question 1", "Question 2", "Question 3", "Question 4",
+  //   "Question 5", "Question 6", "Question 7"])
+  const [questions, setQuestions] = useState<Question[]>([])
   const [selectedQuestions, setSelectedQuestions] = useState<{id: string, label: string, removeHandler: Function}[]>([]) 
 
+  const { fetchMore } = useQuery<Query>(QUESTIONS_QUERY, {
+    onCompleted: (respose) => {
+      const { questions: questionConnection } = respose
+      setQuestions(questionConnection.nodes as Question[])
+      console.log(respose)
+    },
+    fetchPolicy: "network-only"
+  })
+
   const addQuestion = (label: string, removeHandler: Function) => {
-    const id: string = label.replace(/\s+/g, '')
+    const id: string = label.replace(/\s+/g, '_')
     if (!selectedQuestions.find(q => q.id === id)) {
       setSelectedQuestions(q => [...q, { id, label, removeHandler }])
     }
@@ -25,6 +70,8 @@ export const NewAssessementManual = () => {
   const clearSelectedQuestions = () => {
     setSelectedQuestions([])
   }
+
+  fetchMore({})
 
   return (
     <>

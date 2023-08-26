@@ -1,18 +1,24 @@
 import React, { FC, useState } from "react";
 import { Button, Card } from "../../../components";
 import { QuestionCardField } from "./QuestionCardField";
+import { Question } from "../../../__generated__/graphql-schema";
+import { NodeId } from "../../../utils/graphql";
+import { BLOOM_TAXONOMY, CHECK_TYPE, DIFFICULTY } from "../../../utils/types";
 
 interface Props {
-    title: string
+    question: Question
     onAddQuestion: Function,
     onRemoveQuestion: Function
 }
 
-export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion }) => {
+export const QuestionCard: FC<Props> = ({ question, onAddQuestion, onRemoveQuestion }) => {
     const [collapsed, setCollapsed] = useState(false)
     
-    const questionId = title.replace(/\s+/g, '')
-    
+    const title = `Questão ${NodeId.decode(question.id).id}`
+    const difficulty = DIFFICULTY.find(item => item.value === question.difficulty)?.label
+    const bloomTaxonomy = BLOOM_TAXONOMY.find(item => item.value === question.bloomTaxonomy)?.label
+    const checkType = CHECK_TYPE.find(item => item.value === question.checkType)?.label
+
     const handleAddQuestion = () => {
         setButtonState({
             bg: 'bg-red-700', label: 'Remover', method: handleRemoveQuestion
@@ -24,7 +30,7 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
         setButtonState({
             bg: '', label: 'Adicionar', method: handleAddQuestion
         })
-        onRemoveQuestion(questionId)
+        onRemoveQuestion(question.id)
     }
 
     const [buttonState, setButtonState] = useState({
@@ -32,23 +38,21 @@ export const QuestionCard: FC<Props> = ({ title, onAddQuestion, onRemoveQuestion
     })
 
     return (
-        <div id={questionId}>
+        <div id={title.replace(/\s+/g, '_')}>
             <Card title={title} className="mb-5">
                 <div>
                     {!collapsed && <div className="grid grid-cols-2 gap-2">
-                        <QuestionCardField label="Grau de Dificuldade" value="Média"/>
-                        <QuestionCardField label="Categoria" value="Modelagem"/>
-                        <QuestionCardField label="Eixo de Formação" value="Infra Sistemas"/>
-                        <QuestionCardField label="Assunto" value="Fisica"/>
-                        <QuestionCardField label="Habilidade Cognitiva" value="Compreender"/>
-                        <QuestionCardField label="Tipo" value="Resposta Multipla"/>
-                        <QuestionCardField label="Autoria" value="UNIFESO" />
-                        <QuestionCardField label="Ano" value="2023"/>
+                        <QuestionCardField label="Grau de Dificuldade" value={difficulty}/>
+                        <QuestionCardField label="Categoria" value={question.subject?.category.name}/>
+                        <QuestionCardField label="Eixo de Formação" value={question.subject?.axis.name}/>
+                        <QuestionCardField label="Assunto" value={question.subject?.name}/>
+                        <QuestionCardField label="Habilidade Cognitiva" value={bloomTaxonomy}/>
+                        <QuestionCardField label="Tipo" value={checkType}/>
+                        <QuestionCardField label="Autoria" value={question.authorship} />
+                        <QuestionCardField label="Ano" value={question.authorshipYear}/>
                         <div className="col-span-2">
                             <span className="text-gray-700">Enunciado:</span>
-                            <div>
-                                ijodsjidsoifidfsiojsdfiojdsfiodfs ijdf iodsf iosd iojdf sijodsf iojdsf ioj sdfiojdf sioj dfsiojsdf iojdfs ijodsfijoidfsijodfsijdfsijo dsiofd ijosdfjiofdsidsfio
-                            </div>
+                            <div dangerouslySetInnerHTML={{__html: question.body ?? ''}}></div>
                         </div>
                     </div>}
                     <div className="mt-6">
