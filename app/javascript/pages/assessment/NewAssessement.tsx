@@ -5,6 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 
 import { Axis, Query } from "../../__generated__/graphql-schema";
 import { Button, Card, Input, Navigator } from '../../components';
+import { useHistory } from "react-router";
 
 type NewAssessementForm = {
   axisWeights: Record<string, any>
@@ -46,6 +47,8 @@ export const NewAssessement = () => {
 
   const notSelectedAxis: Axis[] = axes.filter((axis) => !subjectsIds.includes(axis.id))
   const selectedAxis: Axis[] = axes.filter((axis) => subjectsIds.includes(axis.id))
+
+  const navigate = useHistory()
 
   return (
     <>
@@ -179,9 +182,14 @@ export const NewAssessement = () => {
           </div>
         </Card>
       </div>
-      <Button type="primary" className="ml-auto mr-6 mt-6">
-        Gerar
-      </Button>
+      <div className="flex justify-end mr-6 gap-4">
+        <Button type="primary" className="mt-6">
+          Gerar Automaticamente
+        </Button>
+        <Button type="primary" className="mt-6" onClick={() => navigate.push('new-manual')}>
+          Gerar Manualmente
+        </Button>
+      </div>
     </>
   )
 }

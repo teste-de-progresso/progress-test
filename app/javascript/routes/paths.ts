@@ -21,4 +21,5 @@ export const DashboardRoutePaths = {
 export const AssessmentRoutePaths = {
   index: "/assessments",
   new: "/assessments/new",
+  newManual: "/assessments/new-manual"
 }
