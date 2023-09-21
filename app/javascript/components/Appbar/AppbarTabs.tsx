@@ -7,12 +7,14 @@ import { AssessmentRoutePaths, DashboardRoutePaths, QuestionRoutePaths } from ".
 import { RootState } from "../../services/store";
 import { turnOff } from "../../services/store/unsavedChanges";
 import { Dialog } from '../Dialog';
+import { useCurrentUser } from "../../contexts";
 
 export const AppbarTabs = () => {
   const unsavedChanges = useSelector((state: RootState) => state.unsavedChanges)
   const dispatch = useDispatch()
   const location = useLocation()
   const history = useHistory()
+  const { isOnlyTeacher } = useCurrentUser()
 
   const [newPath, setNewPath] = useState<string>()
 
@@ -45,14 +47,16 @@ export const AppbarTabs = () => {
     tabel: 'Questões',
     pathname: QuestionRoutePaths.index,
     isCurrent: location.pathname.includes('question'),
-  },
-  {
-    icon: <DocumentIcon className="w-6" />,
-    tabel: 'Avaliações',
-    pathname: AssessmentRoutePaths.index,
-    isCurrent: false,
+  }]
+
+  if (!isOnlyTeacher) {
+    links.push({
+      icon: <DocumentIcon className="w-6" />,
+      tabel: 'Avaliações',
+      pathname: AssessmentRoutePaths.index,
+      isCurrent: false,
+    })
   }
-]
 
   return (
     <>
