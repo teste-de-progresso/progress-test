@@ -33,7 +33,7 @@
     -   Volte para janela de credenciais e novamente crie uma credencial.
 -   Selecione o tipo de aplicativo (Aplicativo da Web).
 -   Escolha um nome
--   Adicione a URI http://localhost:3000/users/auth/google_oauth2/callback às "URIs de redirecionamento autorizadas".
+-   Adicione a URI `http://localhost:3000/users/auth/google_oauth2/callback` às "URIs de redirecionamento autorizadas".
 -   Clique em criar.
 -   Mantenha a janela aberta.
 -   Copie o arquivo `.env.example` e renomeie para `.env`.
