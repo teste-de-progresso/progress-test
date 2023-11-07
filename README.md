@@ -51,12 +51,12 @@
 -   Copie a "Chave secreta do cliente" no campo `GOOGLE_OAUTH_CLIENT_SECRET`.
 -   Salve.
 
-OBSERVAÇÃO:
+**OBSERVAÇÃO:**
 Essa etapa só precisa ser realizada uma vez. Em qualquer outra instância do projeto, o "ID do cliente" e a "Chave secreta do cliente" podem ser reutilizados.
 
 # Levantar a aplicação
 
 -   Execute `docker-compose up`
 
-OBSERVAÇÃO:
+**OBSERVAÇÃO:**
 Caso alguns elementos não carreguem corretamente, execute `yarn install` ou `npx yarn install` para baixar as dependências restantes.
