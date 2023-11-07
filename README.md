@@ -1,12 +1,22 @@
 # Requisitos
 
 -   Docker (Gerenciador de container)
+-   [Node.js](https://nodejs.org/en)
 
 [Instalando Docker no Windows](https://docs.docker.com/desktop/install/windows-install/)
 
-# Setup
+# Setup Linux
 
 -   Execute `./scripts/setup` para gerar a base do container, esse processo pode demorar um pouco pois será baixada todas as depêndencias do projeto, libs e banco de dados.
+-   Execute `docker-compose run --rm $args rails bash` para executar comandos você precisa entrar no console do container, agora você poderar por exemplo rodar as migrações de dados.
+-   Execute `rails db:migrate` para rodar as migrações no banco de dados.
+-   Execute `bundle exec rake environment "user:create_admin[seu.email@example.com, Seu nome]"` para criar seu usuário
+-   Execute `rails db:seed` para popular o banco com os assuntos, exios e categorias
+
+# Setup Windows
+
+-   Execute `docker build --build-arg UID=1000 -t progress-test .` para gerar a base do container, esse processo pode demorar um pouco pois será baixada todas as depêndencias do projeto e libs.
+-   Execute `docker-compose run --rm rails rails db:create` para criar o banco de dados. Também pode ser demorado.
 -   Execute `docker-compose run --rm $args rails bash` para executar comandos você precisa entrar no console do container, agora você poderar por exemplo rodar as migrações de dados.
 -   Execute `rails db:migrate` para rodar as migrações no banco de dados.
 -   Execute `bundle exec rake environment "user:create_admin[seu.email@example.com, Seu nome]"` para criar seu usuário
@@ -41,6 +51,12 @@
 -   Copie a "Chave secreta do cliente" no campo `GOOGLE_OAUTH_CLIENT_SECRET`.
 -   Salve.
 
+[!NOTE]
+Essa etapa só precisa ser realizada uma vez. Em qualquer outra instância do projeto, o "ID do cliente" e a "Chave secreta do cliente" podem ser reutilizados.
+
 # Levantar a aplicação
 
 -   Execute `docker-compose up`
+
+[!NOTE]
+Caso alguns elementos não carreguem corretamente, execute `yarn install` ou `npx yarn install` para baixar as dependências restantes.
