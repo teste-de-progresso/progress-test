@@ -9,8 +9,6 @@ gem "sprockets-rails"
 
 gem 'nio4r', '~> 2.5.8'
 
-gem "pg", "~> 1.1"
-
 gem "puma", "~> 5.0"
 
 gem "jsbundling-rails"
@@ -43,12 +41,17 @@ gem "graphql", "~> 2.0"
 gem "rack-cors", "~> 1.1"
 
 group :development, :test do
+  gem "pg", "~> 1.1"
   gem "dotenv-rails", "~> 2.7"
   gem "rspec-rails", "~> 5.1"
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 2.21"
 
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+end
+
+group :production do
+  gem 'activerecord-nulldb-adapter'
 end
 
 group :development do
