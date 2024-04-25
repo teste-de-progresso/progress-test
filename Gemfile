@@ -7,6 +7,8 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 gem "sprockets-rails"
 
+gem 'nio4r', '2.5.4'
+
 gem "pg", "~> 1.1"
 
 gem "puma", "~> 5.0"
