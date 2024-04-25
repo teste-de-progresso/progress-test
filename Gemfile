@@ -1,13 +1,13 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "3.1.3"
 
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 gem "sprockets-rails"
 
-gem 'nio4r', '2.5.4'
+gem 'nio4r', '~> 2.5.8'
 
 gem "pg", "~> 1.1"
 
