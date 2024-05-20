@@ -1,6 +1,9 @@
 # Guia de Configuração e Execução - Aplicação Progress-Test
 
-Este guia oferece instruções detalhadas para configurar e executar a aplicação Progress-Test em um ambiente Ubuntu. Certifique-se de seguir cada passo cuidadosamente para garantir uma implementação bem-sucedida.
+Este guia oferece instruções detalhadas para configurar e executar a aplicação Progress-Test em um ambiente **Ubuntu**. Certifique-se de seguir cada passo cuidadosamente para garantir uma implementação bem-sucedida. 
+
+> [!WARNING]
+> Para executar a aplicação Progress-Test no **Windows**, é necessário instalar o Windows Subsystem for Linux (WSL). Você pode encontrar instruções de instalação do WSL ![aqui](https://learn.microsoft.com/pt-br/windows/wsl/install).
 
 <br>
 
