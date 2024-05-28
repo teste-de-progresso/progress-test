@@ -47,8 +47,7 @@ rails db:migrate
 ```
 {% endcode %}
 
-3.  Realize as migrações no banco de dados.\
-
+3.  Realize as migrações no banco de dados.
 
     ```bash
     ```
