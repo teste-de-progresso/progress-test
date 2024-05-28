@@ -7,7 +7,7 @@ description: Passos para executar a aplicação.
 1. Abra o **Docker**.
 2. No **Terminal** da aplicação, digite:
 
-```
-// Some code
+```bash
+sudo docker compose up
 ```
 

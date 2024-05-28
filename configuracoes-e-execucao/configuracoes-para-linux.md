@@ -1,6 +1,6 @@
 ---
 description: >-
-  Este guia oferece instruções detalhadas para configurar Progress-Test em um
+  Este guia oferece instruções detalhadas para configurar o Progress-Test em um
   ambiente Linux.
 ---
 
@@ -25,47 +25,43 @@ Siga os passos abaixo para configurar a aplicação:
 2. Execute o seguinte comando para gerar a base do contêiner:
 
 ```bash
-sudo docker build --build-arg UID=1000 -t progress-test
-
+sudo docker build --build-arg UID=1000 -t progress-test .
 ```
 
 {% hint style="info" %}
 **Informação:** este processo pode levar algum tempo, pois todas as dependências do projeto, bibliotecas e banco de dados serão baixadas.
 {% endhint %}
 
+3.  Inicie o contêiner do Docker.\
 
 
-3. Inicie o contêiner do Docker.
-
-```bash
-docker-compose run --rm $args rails bash
-```
-
-3. Crie o banco de dados.
-
-```bash
-rails db:create
-```
-
-3. Realize as migrações no banco de dados.
-
-```bash
-rails db:migrate
-```
-
-3. Crie seu usuário.
-
-```bash
-bundle exec rake environment "user:create_admin[seu.email@example.com, Seu nome]"
-```
-
-3. Popule o banco de dados com os assuntos, exercícios e categorias.
-
-```bash
-rails db:seed
-```
+    ```bash
+    docker-compose run --rm $args rails bash
+    ```
+4.  Crie o banco de dados.\
 
 
+    ```bash
+    rails db:create
+    ```
+5.  Realize as migrações no banco de dados.\
+
+
+    ```bash
+    rails db:migrate
+    ```
+6.  Crie seu usuário.\
+
+
+    ```bash
+    bundle exec rake environment "user:create_admin[seu.email@example.com, Seu nome]"
+    ```
+7.  Popule o banco de dados com os assuntos, exercícios e categorias.\
+
+
+    ```bash
+    rails db:seed
+    ```
 
 ## Configurar Google OAuth [![Google OAuth](https://img.shields.io/badge/Google%20OAuth-%234285F4.svg?\&style=flat\&logo=google\&logoColor=white)](https://developers.google.com/identity/protocols/oauth2)
 
@@ -76,14 +72,12 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 
 1. Abra o [Google Cloud](https://cloud.google.com/?hl=pt-BR) e faça login, utilizando preferencialmente o mesmo e-mail utilizado na criação do usuário.
 2. No topo da página, clique em **Console**.
-3. Se uma janela abrir pedindo para aceitar os termos de serviço, concorde com os termos e prossiga.\
-
+3. Se uma janela abrir pedindo para aceitar os termos de serviço, concorde com os termos e prossiga.
 
 ### Acessar as Configurações de Credenciais
 
 1. No menu da esquerda (se estiver escondido, clique nas três linhas horizontais do canto superior esquerdo), selecione **APIs e serviços**.
-2. Selecione **Credenciais**.\
-
+2. Selecione **Credenciais**.
 
 ### Criar um Projeto e a Credencial
 
