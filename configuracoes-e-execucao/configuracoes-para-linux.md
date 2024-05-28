@@ -10,12 +10,14 @@ description: >-
 
 Antes de iniciar, certifique-se de possuir os seguintes requisitos:
 
-* Distribuição Linux recomendada: [**Ubuntu**](https://ubuntu.com/download/desktop)
+* Distribuição Linux recomendada: [**Ubuntu**](https://ubuntu.com/download/desktop)**.**
 * Para uma melhor experiência de desenvolvimento, recomenda-se a instalação do [**Visual Studio Code**](https://code.visualstudio.com/download)**.**
 
 {% hint style="warning" %}
 **Sugestão:** é altamente recomendável usar uma máquina virtual para facilitar o processo de configuração. Para mais detalhes, assista [este vídeo](https://www.youtube.com/watch?v=XxZ8BTCBDis).
 {% endhint %}
+
+
 
 ***
 
@@ -24,6 +26,8 @@ Antes de iniciar, certifique-se de possuir os seguintes requisitos:
 {% hint style="info" %}
 Siga a [Documentação Oficial](https://docs.docker.com/desktop/install/ubuntu/) para saber como instalar o Docker no Ubuntu.
 {% endhint %}
+
+
 
 ***
 
@@ -72,11 +76,14 @@ bundle exec rake environment "user:create_admin[seu.email@example.com, Seu nome]
 rails db:seed
 ```
 
+
+
 ***
 
 ## Configurar Google OAuth
 
-Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu projeto. Este ID do Cliente é essencial para permitir que os usuários façam login usando suas contas do Google.
+Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu projeto. Este ID do Cliente é essencial para permitir que os usuários façam login usando suas contas do Google.\
+
 
 ***
 
@@ -84,14 +91,16 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 
 1. Abra o [Google Cloud](https://cloud.google.com/?hl=pt-BR) e faça login, utilizando preferencialmente o mesmo e-mail utilizado na criação do usuário.
 2. No topo da página, clique em **Console**.
-3. Se uma janela abrir pedindo para aceitar os termos de serviço, concorde com os termos e prossiga.
+3. Se uma janela abrir pedindo para aceitar os termos de serviço, concorde com os termos e prossiga.\
+
 
 ***
 
 ### Acessar as Configurações de Credenciais
 
 1. No menu da esquerda (se estiver escondido, clique nas três linhas horizontais do canto superior esquerdo), selecione **APIs e serviços**.
-2. Selecione **Credenciais**.
+2. Selecione **Credenciais**.\
+
 
 ***
 
@@ -99,7 +108,8 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 
 1. No canto direito, crie um projeto.
 2. No topo da tela, clique em **Criar Credenciais**.
-3. Selecione **ID do cliente OAuth**.
+3. Selecione **ID do cliente OAuth**.\
+
 
 ***
 
@@ -109,7 +119,8 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 2. Selecione o tipo **Externo**.
 3. Preencha os campos necessários, incluindo o nome do aplicativo e seus detalhes de contato.
 4. Ignore os campos opcionais e clique em **Salvar e Continuar**.
-5. Nas próximas telas, clique em **Salvar e Continuar** e, na última, em **Voltar para o painel**.
+5. Nas próximas telas, clique em **Salvar e Continuar** e, na última, em **Voltar para o painel**.\
+
 
 ***
 
@@ -119,7 +130,8 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 2. Selecione o tipo de aplicativo como **Aplicativo da Web**.
 3. Escolha um nome para a credencial.
 4. Adicione a URI http://localhost:3000/users/auth/google\_oauth2/callback às **URIs de redirecionamento autorizadas**.
-5. Clique em **Criar**.
+5. Clique em **Criar**.\
+
 
 ***
 
@@ -128,5 +140,6 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 1. Na pasta do projeto, renomeie o arquivo `.env.example` para `.env`.
 2. No novo arquivo, cole o **ID do cliente** da credencial no campo `GOOGLE_OAUTH_CLIENT_ID`.
 3. Cole a **Chave secreta do cliente** no campo `GOOGLE_OAUTH_CLIENT_SECRET`.
-4. Salve as alterações.
+4. Salve as alterações.\
+
 
