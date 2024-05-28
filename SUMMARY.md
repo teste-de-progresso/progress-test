@@ -1,7 +1,7 @@
 # Table of contents
 
 * [📖 Introdução](README.md)
-* [📂 Repositório](repositorio.md)
+* [📂 Repositório](repositorios.md)
 * [🛠️ Tecnologias e Ferramentas](tecnologias-e-ferramentas.md)
 * [⚙️ Configurações e Execução](configuracoes-e-execucao/README.md)
   * [🪟 Configurações para Windows](configuracoes-e-execucao/configuracoes-para-windows.md)

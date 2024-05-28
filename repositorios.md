@@ -13,7 +13,7 @@ description: >-
 1. Acesse [GitHub](https://github.com/).
 2. Faça login na sua conta com seu nome de usuário e senha.
 
-##
+
 
 ## Faça o Fork do Repositório
 
@@ -39,7 +39,7 @@ description: >-
 
     Substitua `<URL do seu repositório forkado>` pelo URL que você copiou anteriormente.
 
-##
+
 
 ## Configure o Repositório Remoto
 
@@ -58,7 +58,7 @@ description: >-
 
     Substitua `<URL do repositório original>` pelo URL do repositório que você fez o fork.
 
-##
+
 
 ## Sincronize seu Fork com o Repositório Original
 
@@ -84,7 +84,7 @@ Para garantir que seu fork esteja atualizado com as mudanças mais recentes do r
 
     Substitua `main` pelo nome da branch principal, se for diferente.
 
-##
+
 
 ## Crie uma Branch para a Nova Funcionalidade ou Correção
 
@@ -100,7 +100,7 @@ No Gitflow, é uma boa prática criar uma nova branch para cada funcionalidade o
 
     Substitua `feature/nome-da-sua-branch` por um nome descritivo para a sua nova funcionalidade ou correção.
 
-##
+
 
 ## Faça Modificações e Envie as Mudanças
 
@@ -119,7 +119,7 @@ No Gitflow, é uma boa prática criar uma nova branch para cada funcionalidade o
     git push origin feature/nome-da-sua-branch
     ```
 
-##
+
 
 ## Crie um Pull Request
 
@@ -133,7 +133,7 @@ No Gitflow, é uma boa prática criar uma nova branch para cada funcionalidade o
 6. Adicione um título e uma descrição detalhada para o seu Pull Request, explicando as mudanças feitas.
 7. Clique em **Create Pull Request** novamente para enviar suas mudanças.
 
-##
+
 
 ## Mantenha Seu Fork Atualizado
 

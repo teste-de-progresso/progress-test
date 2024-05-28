@@ -51,7 +51,7 @@ sudo docker build --build-arg UID=1000 -t progress-test .
 3. Inicie o contêiner do **Docker**.
 
 ```bash
-docker-compose run --rm $args rails bash
+sudo docker-compose run --rm $args rails bash
 ```
 
 4. Crie o banco de dados.
