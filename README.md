@@ -1,4 +1,7 @@
 ---
+description: >-
+  Bem-vindo à nossa aplicação para docentes, uma ferramenta projetada para
+  facilitar a criação e avaliação de questões acadêmicas.
 layout:
   title:
     visible: true
