@@ -32,31 +32,33 @@ sudo docker build --build-arg UID=1000 -t progress-test .
 **Informação:** este processo pode levar algum tempo, pois todas as dependências do projeto, bibliotecas e banco de dados serão baixadas.
 {% endhint %}
 
-3.  Inicie o contêiner do Docker.\
+<pre class="language-sh" data-title="3. Inicie o contêiner do Docker." data-full-width="false"><code class="lang-sh"><strong>docker-compose run --rm $args rails bash
+</strong></code></pre>
+
+{% code title="4. Crie o banco de dados." %}
+```sh
+rails db:create
+```
+{% endcode %}
+
+{% code title="5. Realize as migrações no banco de dados." %}
+```sh
+rails db:migrate
+```
+{% endcode %}
+
+3.  Realize as migrações no banco de dados.\
 
 
     ```bash
-    docker-compose run --rm $args rails bash
     ```
-4.  Crie o banco de dados.\
-
-
-    ```bash
-    rails db:create
-    ```
-5.  Realize as migrações no banco de dados.\
-
-
-    ```bash
-    rails db:migrate
-    ```
-6.  Crie seu usuário.\
+4.  Crie seu usuário.\
 
 
     ```bash
     bundle exec rake environment "user:create_admin[seu.email@example.com, Seu nome]"
     ```
-7.  Popule o banco de dados com os assuntos, exercícios e categorias.\
+5.  Popule o banco de dados com os assuntos, exercícios e categorias.\
 
 
     ```bash
