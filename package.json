@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "private": "true",
+  "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@ckeditor/ckeditor5-build-classic": "^21.0.0",
@@ -14,6 +14,8 @@
     "ckeditor5-mathtype": "^1.0.4",
     "esbuild": "^0.14.49",
     "graphql": "^16.5.0",
+    "prop-types": "^15.8.1",
+    "@nivo/tooltip": "^0.79.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.33.1",
@@ -22,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.2.0",
     "styled-components": "^5.3.5",
+    "react-is": "^16.13.1",
     "uuid": "^8.3.2"
   },
   "scripts": {
