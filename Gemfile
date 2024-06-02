@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.3"
+ruby "3.2.4"
 
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
@@ -40,8 +40,10 @@ gem "omniauth-google-oauth2", "~> 0.8.2"
 gem "graphql", "~> 2.0"
 gem "rack-cors", "~> 1.1"
 
+# Move the pg gem out of the group so it is available in all environments
+gem "pg", "~> 1.2"
+
 group :development, :test do
-  gem "pg", "~> 1.1"
   gem "dotenv-rails", "~> 2.7"
   gem "rspec-rails", "~> 5.1"
   gem "factory_bot_rails", "~> 6.2"
