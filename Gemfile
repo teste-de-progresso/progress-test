@@ -40,7 +40,7 @@ gem "omniauth-google-oauth2", "~> 0.8.2"
 gem "graphql", "~> 2.0"
 gem "rack-cors", "~> 1.1"
 
-gem "pg", "~> 1.2"
+gem "pg", "~> 1.2", group: :production
 
 group :development, :test do
   gem "dotenv-rails", "~> 2.7"
