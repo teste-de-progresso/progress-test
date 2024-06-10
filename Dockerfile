@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-slim-bullseye
+FROM ruby:3.3.0
 
 ENV TZ=America/Sao_Paulo
 
@@ -35,7 +35,7 @@ RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-
   apt-get update &&  apt-get install -y libpq5 libpq-dev postgresql-client-13 postgresql-server-dev-13
 
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
   && apt -y install nodejs
 
 RUN npm install -g yarn && yarn && \
