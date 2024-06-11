@@ -1,4 +1,4 @@
-FROM ruby:3.3.0
+FROM ruby:3.3.2
 
 ENV TZ=America/Sao_Paulo
 
@@ -38,7 +38,7 @@ RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
   && apt -y install nodejs
 
-RUN npm install -g yarn && yarn && \
+RUN npm install -g yarn@1.22.19 && yarn --legacy-peer-deps && \
   bundle config git.allow_insecure true && \
   bundle config jobs $(nproc --all) && \
   bundle install && \
