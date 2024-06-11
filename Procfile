@@ -1,2 +1,2 @@
-web: bin/rails server -p $PORT
-js: yarn build:watch
+release: bundle exec rails db:migrate
+web: bundle exec rails server -p $PORT
