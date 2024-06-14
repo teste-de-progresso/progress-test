@@ -1,49 +1,67 @@
 # Guia de Configuração e Execução - Aplicação Progress-Test
 
-Este guia oferece instruções detalhadas para configurar e executar a aplicação Progress-Test em um ambiente **Ubuntu**. Certifique-se de seguir cada passo cuidadosamente para garantir uma implementação bem-sucedida.
+Este guia oferece instruções detalhadas para configurar e executar a aplicação Progress-Test em um ambiente **Windows**. Certifique-se de seguir cada passo cuidadosamente para garantir uma implementação bem-sucedida.
 
 <br>
 
-> [!WARNING]
-> Para executar a aplicação Progress-Test no **Windows**, é necessário instalar o Windows Subsystem for Linux (WSL). Você pode encontrar instruções de instalação do WSL ![aqui](https://learn.microsoft.com/pt-br/windows/wsl/install).
+# 🪟 Configurações para Windows
 
-<br>
+> **💡 Sugestão:** Para uma melhor experiência de desenvolvimento, recomenda-se a instalação do [**Visual Studio Code**](https://code.visualstudio.com/download).
 
-## Requisitos
-Antes de iniciar, certifique-se de possuir os seguintes requisitos:
+## Instalar WSL
 
-- Distribuição Linux recomendada: [![Ubuntu](https://img.shields.io/badge/Ubuntu-%23E95420.svg?&style=flat&logo=ubuntu&logoColor=white)](https://ubuntu.com/download/desktop)
-- Para uma melhor experiência de desenvolvimento, recomenda-se a instalação do [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-%23007ACC.svg?&style=flat&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/download)
+1. No **PowerShell** do Windows, digite o seguinte comando:
+
+    ```powershell
+    wsl --install
+    ```
 
 <br>
 
 > [!TIP]
-> É altamente recomendável usar uma máquina virtual para facilitar o processo de configuração. Para mais detalhes, assista [este vídeo](https://www.youtube.com/watch?v=XxZ8BTCBDis).
+> Para mais informações, acesse a [Documentação Oficial](https://learn.microsoft.com/pt-br/windows/wsl/install).
+
 
 <br>
 
+## Instalar Docker Desktop no Windows
 
-## Configurar Docker [![Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?&style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
+> [!TIP]
+> Siga a [Documentação Oficial](https://docs.docker.com/desktop/install/windows-install/) para saber como instalar o Docker no Windows.
+
+<br>
+
+## Configurar Integração entre o Docker e WSL
+
+1. Acesse as **configurações do Docker**.
+2. Na aba **Resources**, selecione **WSL Integration**.
+3. Marque a integração e **Ubuntu**.
+
+
+<br>
+
+## Configurar Docker
+
 Siga os passos abaixo para configurar a aplicação:
 
-1. Abra o `Terminal`.
+1. Abra o `Terminal` do projeto.
 2. Execute o seguinte comando para gerar a base do contêiner:
 
-   ```bash
-   sudo docker build --build-arg UID=1000 -t progress-test
-   ```
+    ```bash
+    sudo docker build --build-arg UID=1000 -t progress-test .
+    ```
 
 <br>
 
-> [!NOTE]
+> [!CAUTION]
 > Este processo pode levar algum tempo, pois todas as dependências do projeto, bibliotecas e banco de dados serão baixadas.
 
 <br>
 
-3.  Inicie o contêiner do Docker.
+3. Inicie o contêiner do **Docker**.
 
     ```bash
-    docker-compose run --rm $args rails bash
+    sudo docker-compose run --rm $args rails bash
     ```
 
 4. Crie o banco de dados.
@@ -69,21 +87,20 @@ Siga os passos abaixo para configurar a aplicação:
     ```bash
     rails db:seed
     ```
-    
+
 <br>
 
-## Configurar Google OAuth [![Google OAuth](https://img.shields.io/badge/Google%20OAuth-%234285F4.svg?&style=flat&logo=google&logoColor=white)](https://developers.google.com/identity/protocols/oauth2)
+## Configurar Google OAuth
 
 Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu projeto. Este ID do Cliente é essencial para permitir que os usuários façam login usando suas contas do Google.
+
 
 <br>
 
 ### Acessar o Console do Google Cloud
 
 1. Abra o [Google Cloud](https://cloud.google.com/?hl=pt-BR) e faça login, utilizando preferencialmente o mesmo e-mail utilizado na criação do usuário.
-
 2. No topo da página, clique em **Console**.
-
 3. Se uma janela abrir pedindo para aceitar os termos de serviço, concorde com os termos e prossiga.
 
 <br>
@@ -91,7 +108,6 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 ### Acessar as Configurações de Credenciais
 
 1. No menu da esquerda (se estiver escondido, clique nas três linhas horizontais do canto superior esquerdo), selecione **APIs e serviços**.
-
 2. Selecione **Credenciais**.
 
 <br>
@@ -99,9 +115,7 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 ### Criar um Projeto e a Credencial
 
 1. No canto direito, crie um projeto.
-
 2. No topo da tela, clique em **Criar Credenciais**.
-
 3. Selecione **ID do cliente OAuth**.
 
 <br>
@@ -109,13 +123,9 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 ### Configurar a Tela de Permissão
 
 1. Clique em **Configurar Tela de Consentimento**.
-
 2. Selecione o tipo **Externo**.
-
 3. Preencha os campos necessários, incluindo o nome do aplicativo e seus detalhes de contato.
-
 4. Ignore os campos opcionais e clique em **Salvar e Continuar**.
-
 5. Nas próximas telas, clique em **Salvar e Continuar** e, na última, em **Voltar para o painel**.
 
 <br>
@@ -123,13 +133,9 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 ### Criar a Credencial
 
 1. Volte para a janela de credenciais e crie uma nova credencial.
-
 2. Selecione o tipo de aplicativo como **Aplicativo da Web**.
-
 3. Escolha um nome para a credencial.
-
-4. Adicione a URI http://localhost:3000/users/auth/google_oauth2/callback às **URIs de redirecionamento autorizadas**.
-
+4. Adicione a URI `http://localhost:3000/users/auth/google_oauth2/callback` às **URIs de redirecionamento autorizadas**.
 5. Clique em **Criar**.
 
 <br>
@@ -137,11 +143,8 @@ Crie o ID do Cliente OAuth necessário para autenticação com o Google em seu p
 ### Configurar o Arquivo de Ambiente
 
 1. Na pasta do projeto, renomeie o arquivo `.env.example` para `.env`.
-
 2. No novo arquivo, cole o **ID do cliente** da credencial no campo `GOOGLE_OAUTH_CLIENT_ID`.
-
 3. Cole a **Chave secreta do cliente** no campo `GOOGLE_OAUTH_CLIENT_SECRET`.
-
 4. Salve as alterações.
 
 <br>
