@@ -75,14 +75,6 @@ export const SubjectSelect: FC<Props> = () => {
           value={selectedSubject?.axis.name}
         />
       </span>
-      <span className="mt-4">
-        Categoria
-        <input
-          className="block rounded p-1 w-full border-gray-400 border shadow-sm"
-          disabled
-          value={selectedSubject?.category.name}
-        />
-      </span>
     </div>
   );
 };

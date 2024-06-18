@@ -95,10 +95,6 @@ export const ViewMode: FC<Props> = ({ questionData: question }) => {
             {question.subject?.name}
           </div>
           <div>
-            <span className="text-gray-700">Categoria: </span>
-            {question.subject?.category?.name}
-          </div>
-          <div>
             <span className="text-gray-700">Revisor: </span>
             {question.reviewer?.name}
           </div>
