@@ -44,7 +44,6 @@ export const QuestionCard: FC<Props> = ({ question, onAddQuestion, onRemoveQuest
                 <div>
                     {!collapsed && <div className="grid grid-cols-2 gap-2">
                         <QuestionCardField label="Grau de Dificuldade" value={difficulty}/>
-                        <QuestionCardField label="Categoria" value={question.subject?.category.name}/>
                         <QuestionCardField label="Eixo de Formação" value={question.subject?.axis.name}/>
                         <QuestionCardField label="Assunto" value={question.subject?.name}/>
                         <QuestionCardField label="Habilidade Cognitiva" value={bloomTaxonomy}/>

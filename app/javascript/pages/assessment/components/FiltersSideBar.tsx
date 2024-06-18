@@ -66,9 +66,6 @@ export const FiltersSideBar: FC<Props> = () => {
             <div className="mt-3">
                 <form className="flex flex-col gap-4">
                     <SelectFilterField label="Grau de Dificuldade:" options={difficulties}/>
-                    <SelectFilterField label="Categoria:" options={
-                            categories.map(item => ({id: item.id, label: item.name}))
-                        }/>
                     <SelectFilterField label="Eixo de Formação:" options={
                             axis.map(item => ({id: item.id, label: item.name}))   
                         }/>
