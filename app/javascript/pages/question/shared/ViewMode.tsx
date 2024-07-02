@@ -27,9 +27,6 @@ export const ViewModeFragments = gql`
       axis {
         name
       }
-      category {
-        name
-      }
     }
     status
     reviewer {

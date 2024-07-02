@@ -73,13 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_145916) do
     t.index ["name"], name: "index_axes_on_name", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true
-  end
-
   create_table "ck_editor_uploads", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -138,12 +131,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_145916) do
 
   create_table "subjects", force: :cascade do |t|
     t.string "name"
-    t.bigint "category_id", null: false
     t.bigint "axis_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["axis_id"], name: "index_subjects_on_axis_id"
-    t.index ["category_id"], name: "index_subjects_on_category_id"
     t.index ["name"], name: "index_subjects_on_name", unique: true
   end
 
@@ -173,5 +164,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_145916) do
   add_foreign_key "review_requests", "questions"
   add_foreign_key "review_requests", "users"
   add_foreign_key "subjects", "axes"
-  add_foreign_key "subjects", "categories"
 end

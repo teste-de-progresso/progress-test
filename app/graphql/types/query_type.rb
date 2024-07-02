@@ -8,7 +8,6 @@ module Types
     end
     field :axes, AxisType.connection_type, null: false
     field :subjects, SubjectType.connection_type, null: false
-    field :categories, CategoryType.connection_type, null: false
     field :reviewers, UserType.connection_type, null: false
     field :question_filter_options, QuestionFilterOptionsType, null: false
     field :current_user, Types::UserType, null: true
@@ -23,10 +22,6 @@ module Types
 
     def subjects
       Resolvers::SubjectsQueryResolver.new(context).resolve
-    end
-
-    def categories
-      Resolvers::CategoriesQueryResolver.new(context).resolve
     end
 
     def reviewers

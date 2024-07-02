@@ -10,11 +10,6 @@ module Types
       dataloader.with(Sources::ActiveRecord, Axis).load(object.axis_id)
     end
 
-    field :category, CategoryType, null: false
-    def category
-      dataloader.with(Sources::ActiveRecord, Category).load(object.category_id)
-    end
-
     field :questions, QuestionType.connection_type, null: false do
       argument :where, Inputs::QuestionWhereInput, required: false
     end

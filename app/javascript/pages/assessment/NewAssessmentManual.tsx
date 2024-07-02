@@ -21,9 +21,6 @@ const QuestionFragments = gql`
       axis {
         name
       }
-      category {
-        name
-      }
       name
     }
   }

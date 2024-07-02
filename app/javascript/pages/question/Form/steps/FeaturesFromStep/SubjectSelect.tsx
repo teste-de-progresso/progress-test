@@ -25,9 +25,6 @@ const SUBJECTS_QUERY = gql`
         axis {
           name
         }
-        category {
-          name
-        }
       }
     }
   }
