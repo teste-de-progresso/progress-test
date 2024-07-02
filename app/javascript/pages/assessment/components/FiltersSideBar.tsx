@@ -5,16 +5,9 @@ import { SelectFilterField } from "./SelectFilterField";
 import { RangeFilterField } from "./RangeFilterField";
 import { BLOOM_TAXONOMY, CHECK_TYPE, DIFFICULTY } from "../../../utils/types";
 import { gql, useQuery } from "@apollo/client";
-import { Axis, Category, Query, Subject } from "../../../__generated__/graphql-schema";
 
 const FILTERS_QUERY = gql`
   query {
-    categories {
-        nodes {
-            id
-            name
-        }
-    }
     axes {
         nodes {
             id
@@ -35,7 +28,6 @@ type Props = {
 }
 
 export const FiltersSideBar: FC<Props> = () => {
-    const [categories, setCategories] = useState<Category[]>([])
     const [axis, setAxis] = useState<Axis[]>([])
     const [subjects, setSubjects] = useState<Subject[]>([])
 
@@ -50,11 +42,9 @@ export const FiltersSideBar: FC<Props> = () => {
     useQuery<Query>(FILTERS_QUERY, {
         onCompleted: (response) => {
             const {
-                categories: categoriesConnection,
                 axes: axisConnection,
                 subjects: subjectConnection
             } = response
-            setCategories(categoriesConnection.nodes as Category[])
             setAxis(axisConnection.nodes as Axis[])
             setSubjects(subjectConnection.nodes as Subject[])
         },
